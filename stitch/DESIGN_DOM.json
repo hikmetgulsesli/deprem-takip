@@ -1,0 +1,3543 @@
+{
+  "generatedAt": "2026-04-03T21:55:05.870Z",
+  "screenCount": 10,
+  "screens": {
+    "0ec2271439ae4310a97284fc06297d86": {
+      "screenId": "0ec2271439ae4310a97284fc06297d86",
+      "sections": [
+        {
+          "tag": "aside",
+          "classes": [
+            "bg-[#151b2d]",
+            "flex",
+            "flex-col",
+            "h-full",
+            "border-r",
+            "border-white/5",
+            "py-6",
+            "w-64",
+            "hidden",
+            "md:flex"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "classes": [
+            "flex-1",
+            "flex",
+            "flex-col",
+            "h-full",
+            "bg-surface",
+            "overflow-y-auto"
+          ],
+          "childCount": 72
+        },
+        {
+          "tag": "nav",
+          "classes": [
+            "md:hidden",
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "right-0",
+            "bg-[#0c1324]",
+            "border-t",
+            "border-white/5",
+            "px-6",
+            "py-3"
+          ],
+          "childCount": 0
+        }
+      ],
+      "buttons": [
+        {
+          "label": "FİLTRELE",
+          "classes": [
+            "w-full",
+            "py-3",
+            "bg-secondary-container",
+            "text-on-secondary-container",
+            "text-[11px]",
+            "font-black",
+            "tracking-[0.15em]",
+            "rounded-xl",
+            "hover:brightness-110",
+            "transition-all"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "notifications",
+          "classes": [
+            "p-2",
+            "text-[#adc6ff]",
+            "hover:bg-surface-variant",
+            "rounded-full",
+            "transition-colors"
+          ],
+          "icon": "notifications",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [
+            "p-2",
+            "text-[#adc6ff]",
+            "hover:bg-surface-variant",
+            "rounded-full",
+            "transition-colors"
+          ],
+          "icon": "settings",
+          "action": "click-action"
+        },
+        {
+          "label": "7 GÜN",
+          "classes": [
+            "px-4",
+            "py-2",
+            "bg-primary",
+            "text-on-primary",
+            "text-[10px]",
+            "font-bold",
+            "rounded-lg",
+            "tracking-widest",
+            "uppercase"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "30 GÜN",
+          "classes": [
+            "px-4",
+            "py-2",
+            "text-on-surface-variant",
+            "text-[10px]",
+            "font-bold",
+            "tracking-widest",
+            "uppercase",
+            "hover:text-on-surface",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "YILLIK",
+          "classes": [
+            "px-4",
+            "py-2",
+            "text-on-surface-variant",
+            "text-[10px]",
+            "font-bold",
+            "tracking-widest",
+            "uppercase",
+            "hover:text-on-surface",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "ANALİZİ GÜNCELLE",
+          "classes": [
+            "w-full",
+            "py-4",
+            "bg-primary",
+            "text-on-primary",
+            "font-black",
+            "text-xs",
+            "tracking-[0.2em]",
+            "rounded-xl",
+            "hover:scale-[0.98]",
+            "transition-transform"
+          ],
+          "icon": null,
+          "action": "edit"
+        }
+      ],
+      "inputs": [
+        {
+          "type": "range",
+          "placeholder": "",
+          "name": "",
+          "classes": [
+            "w-full",
+            "accent-primary",
+            "h-1",
+            "bg-surface-container-highest",
+            "rounded-lg",
+            "appearance-none",
+            "cursor-pointer"
+          ]
+        }
+      ],
+      "navLinks": [
+        {
+          "label": "map\nHarita",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors"
+          ],
+          "icon": "map"
+        },
+        {
+          "label": "list\nListe",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors"
+          ],
+          "icon": "list"
+        },
+        {
+          "label": "query_stats\nAnaliz",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#adc6ff]",
+            "font-bold",
+            "border-r-4",
+            "border-[#adc6ff]",
+            "bg-[#191f31]",
+            "translate-x-1",
+            "duration-200"
+          ],
+          "icon": "query_stats"
+        },
+        {
+          "label": "description\nRaporlar",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors"
+          ],
+          "icon": "description"
+        },
+        {
+          "label": "help\nDestek",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-4",
+            "py-2",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:opacity-100",
+            "transition-all",
+            "text-xs"
+          ],
+          "icon": "help"
+        },
+        {
+          "label": "info\nHakkında",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-4",
+            "py-2",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:opacity-100",
+            "transition-all",
+            "text-xs"
+          ],
+          "icon": "info"
+        },
+        {
+          "label": "TÜMÜ",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "text-[11px]",
+            "font-bold",
+            "tracking-wider",
+            "uppercase"
+          ],
+          "icon": null
+        },
+        {
+          "label": "USGS",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "text-[11px]",
+            "font-bold",
+            "tracking-wider",
+            "uppercase"
+          ],
+          "icon": null
+        },
+        {
+          "label": "KANDİLLİ",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "text-[11px]",
+            "font-bold",
+            "tracking-wider",
+            "uppercase"
+          ],
+          "icon": null
+        },
+        {
+          "label": "map\nHarita",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-[#dce1fb]",
+            "opacity-50"
+          ],
+          "icon": "map"
+        },
+        {
+          "label": "query_stats\nAnaliz",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-[#adc6ff]"
+          ],
+          "icon": "query_stats"
+        },
+        {
+          "label": "list\nListe",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-[#dce1fb]",
+            "opacity-50"
+          ],
+          "icon": "list"
+        },
+        {
+          "label": "settings\nAyar",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-[#dce1fb]",
+            "opacity-50"
+          ],
+          "icon": "settings"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "map",
+        "list",
+        "query_stats",
+        "description",
+        "help",
+        "info",
+        "notifications",
+        "settings",
+        "filter_list",
+        "calendar_today"
+      ],
+      "images": [],
+      "cssVars": {},
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "8"
+      },
+      "tabBar": [
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Raporlar",
+          "icon": "description",
+          "active": false
+        },
+        {
+          "label": "TÜMÜ",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "USGS",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "KANDİLLİ",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Ayar",
+          "icon": "settings",
+          "active": false
+        }
+      ],
+      "title": "Filtreler ve İstatistikler (V2)"
+    },
+    "377d668269b743d6a30e2b68ff761511": {
+      "screenId": "377d668269b743d6a30e2b68ff761511",
+      "sections": [
+        {
+          "tag": "header",
+          "classes": [
+            "bg-[#0c1324]",
+            "flex",
+            "justify-between",
+            "items-center",
+            "px-8",
+            "py-4",
+            "w-full",
+            "fixed",
+            "top-0",
+            "z-50"
+          ],
+          "childCount": 2
+        },
+        {
+          "tag": "main",
+          "classes": [
+            "px-6",
+            "pb-32",
+            "space-y-4"
+          ],
+          "childCount": 44
+        },
+        {
+          "tag": "nav",
+          "classes": [
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "right-0",
+            "bg-[#151b2d]",
+            "flex",
+            "justify-around",
+            "items-center",
+            "py-3",
+            "px-6"
+          ],
+          "childCount": 2
+        }
+      ],
+      "buttons": [
+        {
+          "label": "notifications",
+          "classes": [
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300",
+            "text-[#dce1fb]",
+            "opacity-60"
+          ],
+          "icon": "notifications",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300",
+            "text-[#dce1fb]",
+            "opacity-60"
+          ],
+          "icon": "settings",
+          "action": "click-action"
+        },
+        {
+          "label": "TÜMÜ",
+          "classes": [
+            "flex-shrink-0",
+            "px-6",
+            "py-2",
+            "rounded-full",
+            "font-label",
+            "text-sm",
+            "uppercase",
+            "tracking-wider",
+            "text-[#adc6ff]",
+            "border-b-2",
+            "border-[#adc6ff]",
+            "pb-1",
+            "bg-surface-container-low"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "USGS",
+          "classes": [
+            "flex-shrink-0",
+            "px-6",
+            "py-2",
+            "rounded-full",
+            "font-label",
+            "text-sm",
+            "uppercase",
+            "tracking-wider",
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:opacity-100",
+            "transition-all"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "KANDİLLİ",
+          "classes": [
+            "flex-shrink-0",
+            "px-6",
+            "py-2",
+            "rounded-full",
+            "font-label",
+            "text-sm",
+            "uppercase",
+            "tracking-wider",
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:opacity-100",
+            "transition-all"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "chevron_right",
+          "classes": [
+            "bg-surface-container-highest",
+            "p-2",
+            "rounded-lg",
+            "text-primary"
+          ],
+          "icon": "chevron_right",
+          "action": "click-action"
+        },
+        {
+          "label": "chevron_right",
+          "classes": [
+            "bg-surface-container-highest",
+            "p-2",
+            "rounded-lg",
+            "text-primary"
+          ],
+          "icon": "chevron_right",
+          "action": "click-action"
+        },
+        {
+          "label": "chevron_right",
+          "classes": [
+            "bg-surface-container-highest",
+            "p-2",
+            "rounded-lg",
+            "text-primary"
+          ],
+          "icon": "chevron_right",
+          "action": "click-action"
+        },
+        {
+          "label": "chevron_right",
+          "classes": [
+            "bg-surface-container-highest",
+            "p-2",
+            "rounded-lg",
+            "text-primary"
+          ],
+          "icon": "chevron_right",
+          "action": "click-action"
+        },
+        {
+          "label": "map\nHarita",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "map",
+          "action": "click-action"
+        },
+        {
+          "label": "list\nListe",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-[#adc6ff]",
+            "font-bold",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "list",
+          "action": "click-action"
+        },
+        {
+          "label": "query_stats\nAnaliz",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "query_stats",
+          "action": "click-action"
+        },
+        {
+          "label": "description\nRaporlar",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "description",
+          "action": "click-action"
+        },
+        {
+          "label": "tune\nFİLTRELE",
+          "classes": [
+            "fixed",
+            "bottom-24",
+            "right-6",
+            "bg-secondary-container",
+            "text-on-secondary-fixed",
+            "p-4",
+            "rounded-full",
+            "shadow-2xl",
+            "z-40",
+            "active:scale-95",
+            "transition-transform",
+            "flex",
+            "items-center",
+            "gap-2"
+          ],
+          "icon": "tune",
+          "action": "click-action"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [],
+      "cards": [],
+      "icons": [
+        "notifications",
+        "settings",
+        "chevron_right",
+        "leak_add",
+        "map",
+        "list",
+        "query_stats",
+        "description",
+        "tune"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuA52WHFvlHc_BeSFCH8FI-Q4dKI6wsaeYENon5GX08UQIquba9u2L-DAUYA3m9g1ggz5mTlRJX3AP6z4Yo_a2Ey5wex6HCtnQ7AImPxqi3SH7Pg_6Vo0omYiWHjxupeUwN_wYRwjfXdn1BzudcWv5",
+          "alt": "abstract satellite view of geography with neon glowing topographic lines and data points in dark blue and orange"
+        }
+      ],
+      "cssVars": {},
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 2,
+        "flexDirection": "col",
+        "gap": "4"
+      },
+      "tabBar": [
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Raporlar",
+          "icon": "description",
+          "active": false
+        }
+      ],
+      "title": "Mobil Deprem Listesi"
+    },
+    "485a41b9b49644368fca6907997b6850": {
+      "screenId": "485a41b9b49644368fca6907997b6850",
+      "sections": [
+        {
+          "tag": "nav",
+          "classes": [
+            "md:hidden",
+            "fixed",
+            "bottom-0",
+            "w-full",
+            "bg-[#151b2d]",
+            "flex",
+            "justify-around",
+            "items-center",
+            "py-4",
+            "z-[60]"
+          ],
+          "childCount": 4
+        }
+      ],
+      "buttons": [
+        {
+          "label": "close",
+          "classes": [
+            "w-10",
+            "h-10",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-full",
+            "bg-surface-container-high",
+            "text-on-surface-variant",
+            "hover:text-on-surface",
+            "transition-colors"
+          ],
+          "icon": "close",
+          "action": "dismiss"
+        },
+        {
+          "label": "public\n                        TÜMÜ",
+          "classes": [
+            "flex-1",
+            "py-3",
+            "px-4",
+            "rounded-full",
+            "bg-primary",
+            "text-on-primary",
+            "font-bold",
+            "text-xs",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-2",
+            "transition-all"
+          ],
+          "icon": "public",
+          "action": "click-action"
+        },
+        {
+          "label": "language\n                        USGS",
+          "classes": [
+            "flex-1",
+            "py-3",
+            "px-4",
+            "rounded-full",
+            "text-on-surface-variant",
+            "font-medium",
+            "text-xs",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-2",
+            "hover:text-on-surface",
+            "transition-all"
+          ],
+          "icon": "language",
+          "action": "click-action"
+        },
+        {
+          "label": "location_on\n                        KANDİLLİ",
+          "classes": [
+            "flex-1",
+            "py-3",
+            "px-4",
+            "rounded-full",
+            "text-on-surface-variant",
+            "font-medium",
+            "text-xs",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-2",
+            "hover:text-on-surface",
+            "transition-all"
+          ],
+          "icon": "location_on",
+          "action": "click-action"
+        },
+        {
+          "label": "Sonuçları Göster",
+          "classes": [
+            "w-full",
+            "bg-primary",
+            "py-5",
+            "rounded-full",
+            "text-on-primary",
+            "font-bold",
+            "tracking-widest",
+            "text-sm",
+            "shadow-xl",
+            "active:scale-95",
+            "transition-transform",
+            "uppercase"
+          ],
+          "icon": null,
+          "action": "click-action"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [],
+      "cards": [],
+      "icons": [
+        "close",
+        "calendar_today",
+        "public",
+        "language",
+        "location_on",
+        "unfold_more",
+        "expand_more",
+        "notifications_active",
+        "map",
+        "list",
+        "query_stats",
+        "description"
+      ],
+      "images": [],
+      "cssVars": {},
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 2,
+        "flexDirection": "col",
+        "gap": "4"
+      },
+      "tabBar": [
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Raporlar",
+          "icon": "description",
+          "active": false
+        }
+      ],
+      "title": "Mobil Filtreler"
+    },
+    "56e54822f8464da39d86892286d37f9d": {
+      "screenId": "56e54822f8464da39d86892286d37f9d",
+      "sections": [
+        {
+          "tag": "aside",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "flex-col",
+            "h-full",
+            "border-r",
+            "border-white/5",
+            "py-6",
+            "bg-[#151b2d]",
+            "text-[#adc6ff]",
+            "w-64"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "classes": [
+            "flex-1",
+            "flex",
+            "flex-col",
+            "relative",
+            "overflow-hidden"
+          ],
+          "childCount": 50
+        },
+        {
+          "tag": "nav",
+          "classes": [
+            "md:hidden",
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "right-0",
+            "h-16",
+            "bg-[#151b2d]",
+            "flex",
+            "justify-around",
+            "items-center"
+          ],
+          "childCount": 1
+        }
+      ],
+      "buttons": [
+        {
+          "label": "FİLTRELE",
+          "classes": [
+            "w-full",
+            "py-3",
+            "bg-[#adc6ff]",
+            "text-[#00285d]",
+            "font-bold",
+            "text-xs",
+            "tracking-widest",
+            "uppercase",
+            "rounded-xl",
+            "hover:opacity-90",
+            "transition-all"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "notifications",
+          "classes": [
+            "p-2",
+            "text-[#adc6ff]",
+            "hover:scale-95",
+            "transition-transform"
+          ],
+          "icon": "notifications",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [
+            "p-2",
+            "text-[#adc6ff]",
+            "hover:scale-95",
+            "transition-transform"
+          ],
+          "icon": "settings",
+          "action": "click-action"
+        },
+        {
+          "label": "Son 24 Saat check",
+          "classes": [
+            "flex",
+            "items-center",
+            "justify-between",
+            "px-4",
+            "py-2",
+            "bg-primary/10",
+            "border",
+            "border-primary/30",
+            "rounded-lg",
+            "text-xs",
+            "font-medium",
+            "text-primary"
+          ],
+          "icon": "check",
+          "action": "click-action"
+        },
+        {
+          "label": "7 Gün",
+          "classes": [
+            "flex",
+            "items-center",
+            "justify-between",
+            "px-4",
+            "py-2",
+            "bg-surface-container-highest/50",
+            "border",
+            "border-white/5",
+            "rounded-lg",
+            "text-xs",
+            "font-medium",
+            "text-on-surface-variant",
+            "hover:bg-surface-container-highest",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "30 Gün",
+          "classes": [
+            "flex",
+            "items-center",
+            "justify-between",
+            "px-4",
+            "py-2",
+            "bg-surface-container-highest/50",
+            "border",
+            "border-white/5",
+            "rounded-lg",
+            "text-xs",
+            "font-medium",
+            "text-on-surface-variant",
+            "hover:bg-surface-container-highest",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "KANDİLLİ",
+          "classes": [
+            "flex-1",
+            "py-2",
+            "text-[10px]",
+            "font-bold",
+            "rounded-md",
+            "bg-secondary",
+            "text-on-secondary",
+            "shadow-md",
+            "transition-all"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "USGS",
+          "classes": [
+            "flex-1",
+            "py-2",
+            "text-[10px]",
+            "font-bold",
+            "rounded-md",
+            "text-on-surface-variant",
+            "hover:text-on-surface",
+            "transition-colors"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "add",
+          "classes": [
+            "w-10",
+            "h-10",
+            "bg-surface-container-high/80",
+            "backdrop-blur-md",
+            "rounded-lg",
+            "flex",
+            "items-center",
+            "justify-center",
+            "border",
+            "border-white/5",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "transition-all"
+          ],
+          "icon": "add",
+          "action": "create"
+        },
+        {
+          "label": "remove",
+          "classes": [
+            "w-10",
+            "h-10",
+            "bg-surface-container-high/80",
+            "backdrop-blur-md",
+            "rounded-lg",
+            "flex",
+            "items-center",
+            "justify-center",
+            "border",
+            "border-white/5",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "transition-all"
+          ],
+          "icon": "remove",
+          "action": "click-action"
+        },
+        {
+          "label": "my_location",
+          "classes": [
+            "w-10",
+            "h-10",
+            "bg-surface-container-high/80",
+            "backdrop-blur-md",
+            "rounded-lg",
+            "flex",
+            "items-center",
+            "justify-center",
+            "border",
+            "border-white/5",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "transition-all"
+          ],
+          "icon": "my_location",
+          "action": "click-action"
+        },
+        {
+          "label": "layers",
+          "classes": [
+            "w-10",
+            "h-10",
+            "bg-surface-container-high/80",
+            "backdrop-blur-md",
+            "rounded-lg",
+            "flex",
+            "items-center",
+            "justify-center",
+            "border",
+            "border-white/5",
+            "hover:bg-primary/20",
+            "hover:text-primary",
+            "transition-all"
+          ],
+          "icon": "layers",
+          "action": "click-action"
+        },
+        {
+          "label": "map\nHarita",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "text-[#adc6ff]"
+          ],
+          "icon": "map",
+          "action": "click-action"
+        },
+        {
+          "label": "list\nListe",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "text-[#dce1fb]",
+            "opacity-50"
+          ],
+          "icon": "list",
+          "action": "click-action"
+        },
+        {
+          "label": "query_stats\nAnaliz",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "text-[#dce1fb]",
+            "opacity-50"
+          ],
+          "icon": "query_stats",
+          "action": "click-action"
+        },
+        {
+          "label": "person\nProfil",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "text-[#dce1fb]",
+            "opacity-50"
+          ],
+          "icon": "person",
+          "action": "click-action"
+        }
+      ],
+      "inputs": [
+        {
+          "type": "range",
+          "placeholder": "",
+          "name": "",
+          "classes": [
+            "w-full",
+            "h-1",
+            "bg-surface-container-highest",
+            "rounded-lg",
+            "appearance-none",
+            "cursor-pointer"
+          ]
+        }
+      ],
+      "navLinks": [
+        {
+          "label": "map\nHarita",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#adc6ff]",
+            "font-bold",
+            "border-r-4",
+            "border-[#adc6ff]",
+            "bg-[#191f31]",
+            "translate-x-1",
+            "duration-200"
+          ],
+          "icon": "map"
+        },
+        {
+          "label": "list\nListe",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors"
+          ],
+          "icon": "list"
+        },
+        {
+          "label": "query_stats\nAnaliz",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors"
+          ],
+          "icon": "query_stats"
+        },
+        {
+          "label": "description\nRaporlar",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors"
+          ],
+          "icon": "description"
+        },
+        {
+          "label": "help Destek",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "text-xs",
+            "opacity-50",
+            "hover:opacity-100",
+            "transition-opacity"
+          ],
+          "icon": "help"
+        },
+        {
+          "label": "info Hakkında",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "text-xs",
+            "opacity-50",
+            "hover:opacity-100",
+            "transition-opacity"
+          ],
+          "icon": "info"
+        },
+        {
+          "label": "TÜMÜ",
+          "href": "#",
+          "classes": [
+            "text-[#adc6ff]",
+            "border-b-2",
+            "border-[#adc6ff]",
+            "pb-1",
+            "text-xs",
+            "font-bold",
+            "tracking-wider",
+            "font-label",
+            "uppercase"
+          ],
+          "icon": null
+        },
+        {
+          "label": "USGS",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300",
+            "text-xs",
+            "font-bold",
+            "tracking-wider",
+            "font-label",
+            "uppercase"
+          ],
+          "icon": null
+        },
+        {
+          "label": "KANDİLLİ",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300",
+            "text-xs",
+            "font-bold",
+            "tracking-wider",
+            "font-label",
+            "uppercase"
+          ],
+          "icon": null
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "map",
+        "list",
+        "query_stats",
+        "description",
+        "help",
+        "info",
+        "notifications",
+        "settings",
+        "check",
+        "timer",
+        "straighten",
+        "add",
+        "remove",
+        "my_location",
+        "layers",
+        "notifications_active",
+        "person"
+      ],
+      "images": [],
+      "cssVars": {},
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "8"
+      },
+      "tabBar": [
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Raporlar",
+          "icon": "description",
+          "active": false
+        },
+        {
+          "label": "TÜMÜ",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "USGS",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "KANDİLLİ",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "notifications_active",
+          "icon": "notifications_active",
+          "active": true
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Profil",
+          "icon": "person",
+          "active": false
+        }
+      ],
+      "title": "Ana Harita Görünümü (V2)"
+    },
+    "6192ac4512034583a70153ccb89cd6e0": {
+      "screenId": "6192ac4512034583a70153ccb89cd6e0",
+      "sections": [
+        {
+          "tag": "aside",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "flex-col",
+            "h-screen",
+            "w-64",
+            "bg-[#151b2d]",
+            "py-6",
+            "border-r",
+            "border-white/5",
+            "sticky"
+          ],
+          "childCount": 5
+        },
+        {
+          "tag": "header",
+          "classes": [
+            "bg-[#0c1324]",
+            "text-[#adc6ff]",
+            "flex",
+            "justify-between",
+            "items-center",
+            "px-8",
+            "py-4",
+            "w-full",
+            "z-10",
+            "sticky"
+          ],
+          "childCount": 2
+        },
+        {
+          "tag": "main",
+          "classes": [
+            "flex-1",
+            "px-8",
+            "py-12",
+            "lg:px-24"
+          ],
+          "childCount": 44
+        },
+        {
+          "tag": "nav",
+          "classes": [
+            "md:hidden",
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "right-0",
+            "bg-[#0c1324]",
+            "flex",
+            "justify-around",
+            "items-center",
+            "py-4"
+          ],
+          "childCount": 0
+        }
+      ],
+      "buttons": [
+        {
+          "label": "FİLTRELE",
+          "classes": [
+            "w-full",
+            "py-3",
+            "bg-primary",
+            "text-on-primary-container",
+            "text-xs",
+            "font-bold",
+            "font-label",
+            "uppercase",
+            "tracking-widest",
+            "rounded-xl",
+            "hover:opacity-90",
+            "transition-opacity"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "notifications",
+          "classes": [
+            "material-symbols-outlined",
+            "text-2xl",
+            "hover:scale-110",
+            "transition-transform"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [
+            "material-symbols-outlined",
+            "text-2xl",
+            "hover:scale-110",
+            "transition-transform"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "map",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "text-on-surface",
+            "opacity-50"
+          ],
+          "icon": "map",
+          "action": "click-action"
+        },
+        {
+          "label": "list",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "text-on-surface",
+            "opacity-50"
+          ],
+          "icon": "list",
+          "action": "click-action"
+        },
+        {
+          "label": "info",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "text-primary"
+          ],
+          "icon": "info",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "text-on-surface",
+            "opacity-50"
+          ],
+          "icon": "settings",
+          "action": "click-action"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [
+        {
+          "label": "map\nHarita",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "map"
+        },
+        {
+          "label": "list\nListe",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "list"
+        },
+        {
+          "label": "query_stats\nAnaliz",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "query_stats"
+        },
+        {
+          "label": "description\nRaporlar",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "description"
+        },
+        {
+          "label": "help\nDestek",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors"
+          ],
+          "icon": "help"
+        },
+        {
+          "label": "info\nHakkında",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#adc6ff]",
+            "font-bold",
+            "border-r-4",
+            "border-[#adc6ff]",
+            "bg-[#191f31]",
+            "translate-x-1",
+            "duration-200"
+          ],
+          "icon": "info"
+        },
+        {
+          "label": "TÜMÜ",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "font-label",
+            "uppercase",
+            "text-[11px]",
+            "tracking-wider",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300"
+          ],
+          "icon": null
+        },
+        {
+          "label": "USGS",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "font-label",
+            "uppercase",
+            "text-[11px]",
+            "tracking-wider",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300"
+          ],
+          "icon": null
+        },
+        {
+          "label": "KANDİLLİ",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "font-label",
+            "uppercase",
+            "text-[11px]",
+            "tracking-wider",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300"
+          ],
+          "icon": null
+        },
+        {
+          "label": "mail\n\nE-Posta Desteği",
+          "href": "mailto:destek@deprem-takip.com",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "group"
+          ],
+          "icon": "mail"
+        },
+        {
+          "label": "share\n\nSosyal Medya",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "group"
+          ],
+          "icon": "share"
+        },
+        {
+          "label": "bug_report\n\nHata Bildir",
+          "href": "#",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "group"
+          ],
+          "icon": "bug_report"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "map",
+        "list",
+        "query_stats",
+        "description",
+        "help",
+        "info",
+        "public",
+        "analytics",
+        "check_circle",
+        "mail",
+        "share",
+        "bug_report",
+        "settings"
+      ],
+      "images": [],
+      "cssVars": {},
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "6"
+      },
+      "tabBar": [
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Raporlar",
+          "icon": "description",
+          "active": false
+        },
+        {
+          "label": "TÜMÜ",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "USGS",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "KANDİLLİ",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "map",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "list",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "info",
+          "icon": "info",
+          "active": true
+        },
+        {
+          "label": "settings",
+          "icon": "settings",
+          "active": false
+        }
+      ],
+      "title": "Hakkında (V2)"
+    },
+    "be298d8e6c1e4e9ab5342f628610e978": {
+      "screenId": "be298d8e6c1e4e9ab5342f628610e978",
+      "sections": [
+        {
+          "tag": "aside",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "flex-col",
+            "h-full",
+            "border-r",
+            "border-white/5",
+            "py-6",
+            "bg-[#151b2d]",
+            "w-64",
+            "shrink-0"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "classes": [
+            "flex-1",
+            "flex",
+            "flex-col",
+            "min-w-0",
+            "bg-surface",
+            "overflow-y-auto",
+            "no-scrollbar"
+          ],
+          "childCount": 102
+        }
+      ],
+      "buttons": [
+        {
+          "label": "FİLTRELE",
+          "classes": [
+            "w-full",
+            "py-3",
+            "bg-surface-container-highest",
+            "text-primary",
+            "font-label",
+            "text-xs",
+            "tracking-widest",
+            "rounded-xl",
+            "hover:bg-surface-bright",
+            "transition-all"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "notifications",
+          "classes": [
+            "text-[#adc6ff]",
+            "opacity-80",
+            "hover:opacity-100",
+            "transition-all"
+          ],
+          "icon": "notifications",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [
+            "text-[#adc6ff]",
+            "opacity-80",
+            "hover:opacity-100",
+            "transition-all"
+          ],
+          "icon": "settings",
+          "action": "click-action"
+        },
+        {
+          "label": "TÜMÜNÜ DIŞA AKTAR",
+          "classes": [
+            "bg-primary/10",
+            "hover:bg-primary/20",
+            "text-primary",
+            "px-4",
+            "py-2",
+            "rounded-lg",
+            "text-xs",
+            "font-bold",
+            "transition-all",
+            "uppercase",
+            "tracking-widest"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "add",
+          "classes": [
+            "fixed",
+            "bottom-8",
+            "right-8",
+            "w-16",
+            "h-16",
+            "bg-primary",
+            "text-on-primary",
+            "rounded-full",
+            "shadow-2xl",
+            "flex",
+            "items-center",
+            "justify-center",
+            "hover:scale-105",
+            "transition-transform",
+            "z-[100]",
+            "md:hidden"
+          ],
+          "icon": "add",
+          "action": "create"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [
+        {
+          "label": "map\nHarita",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "map"
+        },
+        {
+          "label": "list\nListe",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "list"
+        },
+        {
+          "label": "query_stats\nAnaliz",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#adc6ff]",
+            "font-bold",
+            "border-r-4",
+            "border-[#adc6ff]",
+            "bg-[#191f31]",
+            "translate-x-1",
+            "duration-200",
+            "group"
+          ],
+          "icon": "query_stats"
+        },
+        {
+          "label": "description\nRaporlar",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-4",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "description"
+        },
+        {
+          "label": "help\nDestek",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:opacity-100",
+            "transition-all"
+          ],
+          "icon": "help"
+        },
+        {
+          "label": "info\nHakkında",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:opacity-100",
+            "transition-all"
+          ],
+          "icon": "info"
+        },
+        {
+          "label": "TÜMÜ",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "font-label",
+            "text-[11px]",
+            "tracking-wider",
+            "uppercase",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300"
+          ],
+          "icon": null
+        },
+        {
+          "label": "USGS",
+          "href": "#",
+          "classes": [
+            "text-[#adc6ff]",
+            "border-b-2",
+            "border-[#adc6ff]",
+            "pb-1",
+            "font-label",
+            "text-[11px]",
+            "tracking-wider",
+            "uppercase"
+          ],
+          "icon": null
+        },
+        {
+          "label": "KANDİLLİ",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "font-label",
+            "text-[11px]",
+            "tracking-wider",
+            "uppercase",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300"
+          ],
+          "icon": null
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "map",
+        "list",
+        "query_stats",
+        "description",
+        "help",
+        "info",
+        "notifications",
+        "settings",
+        "warning",
+        "add"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuArtMDf8MDyr8hHRON3BoXLzMz1-tdZg0fKcJO5hSgTrXpSY_ZhCH5wo1YnOpawhS-LThPFizyYE2MaT69eniqYmlBPvdpMYUbORhNOmwDFYNujhOOUAIp6srlAlkm1ohZpGs35Oz_yVEaDJXnNoZ",
+          "alt": "Dark minimalist world map with glowing heat spots and seismic data overlay"
+        },
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuDy0sqxe3a57HXqtezL5zYMkyMRkWyI7BXwApddBB4Qe7l_Qh4otNYEpStNAJ7IDK9iu4IeDsOZcOyIOnlB8x5BfcZDreEsirCFHDjrBwWhOv7K5-Mrl2QjKjGi9rVDTyHAYvt5KpIBTnBqsmKjbJ",
+          "alt": "Abstract digital grid with flowing blue lines representing data transfer"
+        }
+      ],
+      "cssVars": {},
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "6"
+      },
+      "tabBar": [
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Raporlar",
+          "icon": "description",
+          "active": false
+        },
+        {
+          "label": "TÜMÜ",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "USGS",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "KANDİLLİ",
+          "icon": null,
+          "active": false
+        }
+      ],
+      "title": "Analiz Paneli"
+    },
+    "c190d4a86bdc4cbcace52050b0fbb204": {
+      "screenId": "c190d4a86bdc4cbcace52050b0fbb204",
+      "sections": [
+        {
+          "tag": "header",
+          "classes": [
+            "fixed",
+            "top-0",
+            "left-0",
+            "right-0",
+            "z-50",
+            "flex",
+            "justify-between",
+            "items-center",
+            "px-6",
+            "py-4"
+          ],
+          "childCount": 2
+        },
+        {
+          "tag": "main",
+          "classes": [
+            "flex-grow",
+            "relative",
+            "mt-16"
+          ],
+          "childCount": 9
+        },
+        {
+          "tag": "section",
+          "classes": [
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "right-0",
+            "z-50",
+            "glass-panel",
+            "rounded-t-full",
+            "border-t",
+            "border-white/5",
+            "pt-3"
+          ],
+          "childCount": 17
+        },
+        {
+          "tag": "nav",
+          "classes": [
+            "fixed",
+            "bottom-0",
+            "left-0",
+            "right-0",
+            "md:hidden",
+            "bg-surface-container-low",
+            "flex",
+            "justify-around",
+            "items-center",
+            "py-3"
+          ],
+          "childCount": 0
+        }
+      ],
+      "buttons": [
+        {
+          "label": "search",
+          "classes": [
+            "w-10",
+            "h-10",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-full",
+            "surface-container",
+            "hover:bg-surface-container-high",
+            "transition-colors"
+          ],
+          "icon": "search",
+          "action": "search"
+        },
+        {
+          "label": "settings",
+          "classes": [
+            "w-10",
+            "h-10",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-full",
+            "bg-[#151b2d]",
+            "hover:bg-surface-container-high",
+            "transition-colors"
+          ],
+          "icon": "settings",
+          "action": "click-action"
+        },
+        {
+          "label": "filter_list\nFİLTRELE",
+          "classes": [
+            "absolute",
+            "bottom-32",
+            "right-6",
+            "z-40",
+            "bg-secondary-container",
+            "text-on-secondary-container",
+            "px-6",
+            "py-4",
+            "rounded-full",
+            "flex",
+            "items-center",
+            "gap-3",
+            "shadow-2xl",
+            "active:scale-95",
+            "transition-transform"
+          ],
+          "icon": "filter_list",
+          "action": "click-action"
+        },
+        {
+          "label": "map\nHarita",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-primary"
+          ],
+          "icon": "map",
+          "action": "click-action"
+        },
+        {
+          "label": "list\nListe",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-on-surface-variant",
+            "opacity-60"
+          ],
+          "icon": "list",
+          "action": "click-action"
+        },
+        {
+          "label": "query_stats\nAnaliz",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-on-surface-variant",
+            "opacity-60"
+          ],
+          "icon": "query_stats",
+          "action": "click-action"
+        },
+        {
+          "label": "description\nRaporlar",
+          "classes": [
+            "flex",
+            "flex-col",
+            "items-center",
+            "gap-1",
+            "text-on-surface-variant",
+            "opacity-60"
+          ],
+          "icon": "description",
+          "action": "click-action"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [],
+      "cards": [],
+      "icons": [
+        "search",
+        "settings",
+        "filter_list",
+        "map",
+        "list",
+        "query_stats",
+        "description"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuAd1ZV_yzBWn6i97UiIgNaO75SjqeLdyKSljuYdU5ECnY5KQlE2D_FTAYX5bOi4jsjNqERgmZq752xmiHEUUX2_oCKaqyW3pibTYzF-wuGutk1cR9y6B1Ryyp0Xb38HDzCfRLxuRJUtm1FnjBeIdp",
+          "alt": "Technical minimalist dark mode map of Turkey with seismic fault lines and glowing activity nodes in cyan and orange"
+        }
+      ],
+      "cssVars": {},
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "flexDirection": "col",
+        "gap": "3"
+      },
+      "tabBar": [
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": true
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Raporlar",
+          "icon": "description",
+          "active": false
+        }
+      ],
+      "title": "Mobil Harita Görünümü (V2)"
+    },
+    "dc0f8eece017459ba6b9a4b49630f863": {
+      "screenId": "dc0f8eece017459ba6b9a4b49630f863",
+      "sections": [
+        {
+          "tag": "aside",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "flex-col",
+            "h-full",
+            "border-r",
+            "border-white/5",
+            "py-6",
+            "bg-[#151b2d]",
+            "text-[#adc6ff]",
+            "w-64"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "header",
+          "classes": [
+            "flex",
+            "justify-between",
+            "items-center",
+            "px-8",
+            "py-4",
+            "w-full",
+            "bg-[#0c1324]",
+            "text-[#adc6ff]"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "classes": [
+            "flex-1",
+            "flex",
+            "flex-col",
+            "md:flex-row",
+            "overflow-hidden"
+          ],
+          "childCount": 90
+        }
+      ],
+      "buttons": [
+        {
+          "label": "tune\n                FİLTRELE",
+          "classes": [
+            "w-full",
+            "py-3",
+            "bg-[#191f31]",
+            "text-[#adc6ff]",
+            "text-xs",
+            "font-bold",
+            "font-label",
+            "uppercase",
+            "tracking-widest",
+            "hover:bg-surface-container-highest",
+            "transition-all",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-2"
+          ],
+          "icon": "tune",
+          "action": "click-action"
+        },
+        {
+          "label": "notifications",
+          "classes": [
+            "p-2",
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:opacity-100",
+            "transition-opacity"
+          ],
+          "icon": "notifications",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [
+            "p-2",
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:opacity-100",
+            "transition-opacity"
+          ],
+          "icon": "settings",
+          "action": "click-action"
+        },
+        {
+          "label": "ALL",
+          "classes": [
+            "py-2",
+            "text-[10px]",
+            "font-bold",
+            "font-label",
+            "rounded",
+            "bg-surface-container-highest",
+            "border",
+            "border-outline-variant",
+            "text-on-surface"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "3.0+",
+          "classes": [
+            "py-2",
+            "text-[10px]",
+            "font-bold",
+            "font-label",
+            "rounded",
+            "bg-surface-container-highest",
+            "border",
+            "border-outline-variant",
+            "text-on-surface"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "4.0+",
+          "classes": [
+            "py-2",
+            "text-[10px]",
+            "font-bold",
+            "font-label",
+            "rounded",
+            "bg-primary",
+            "text-on-primary-container"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "5.0+",
+          "classes": [
+            "py-2",
+            "text-[10px]",
+            "font-bold",
+            "font-label",
+            "rounded",
+            "bg-surface-container-highest",
+            "border",
+            "border-outline-variant",
+            "text-on-surface"
+          ],
+          "icon": null,
+          "action": "click-action"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [
+        {
+          "label": "map\nHarita",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "map"
+        },
+        {
+          "label": "list\nListe",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#adc6ff]",
+            "font-bold",
+            "border-r-4",
+            "border-[#adc6ff]",
+            "bg-[#191f31]",
+            "translate-x-1",
+            "duration-200"
+          ],
+          "icon": "list"
+        },
+        {
+          "label": "query_stats\nAnaliz",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "query_stats"
+        },
+        {
+          "label": "description\nRaporlar",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "group"
+          ],
+          "icon": "description"
+        },
+        {
+          "label": "help\nDestek",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-2",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:opacity-100",
+            "transition-opacity"
+          ],
+          "icon": "help"
+        },
+        {
+          "label": "info\nHakkında",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-2",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:opacity-100",
+            "transition-opacity"
+          ],
+          "icon": "info"
+        },
+        {
+          "label": "TÜMÜ",
+          "href": "#",
+          "classes": [
+            "text-[#adc6ff]",
+            "border-b-2",
+            "border-[#adc6ff]",
+            "pb-1",
+            "text-xs",
+            "font-label",
+            "uppercase",
+            "tracking-wider"
+          ],
+          "icon": null
+        },
+        {
+          "label": "USGS",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300",
+            "text-xs",
+            "font-label",
+            "uppercase",
+            "tracking-wider"
+          ],
+          "icon": null
+        },
+        {
+          "label": "KANDİLLİ",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300",
+            "text-xs",
+            "font-label",
+            "uppercase",
+            "tracking-wider"
+          ],
+          "icon": null
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "map",
+        "list",
+        "query_stats",
+        "description",
+        "tune",
+        "help",
+        "info",
+        "notifications",
+        "settings",
+        "expand_more",
+        "unfold_more",
+        "check_circle",
+        "radio_button_unchecked"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuC1X4SmEtqqri1QEgc-LhOXpt3cPpNTdEh5nR1LwR1ZCFuOoLdZQkb3xwsBySUTbTHeRXs_pNruD9z9EVHCauclKqXte1Jl4Qz911q6fYhAGLX4sTJwsseQHTvM9MqmSP55bM22Ih9RVAKL9RT-uG",
+          "alt": "dark mode satellite map of Turkey with seismic activity hot spots marked by glowing rings"
+        }
+      ],
+      "cssVars": {},
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 12,
+        "flexDirection": "col",
+        "gap": "2"
+      },
+      "tabBar": [
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Raporlar",
+          "icon": "description",
+          "active": false
+        },
+        {
+          "label": "TÜMÜ",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "USGS",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "KANDİLLİ",
+          "icon": null,
+          "active": false
+        }
+      ],
+      "title": "Deprem Listesi (V2)"
+    },
+    "dc5b838ef0264a118ba6f0fea15938ab": {
+      "screenId": "dc5b838ef0264a118ba6f0fea15938ab",
+      "sections": [
+        {
+          "tag": "aside",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "flex-col",
+            "h-screen",
+            "w-64",
+            "bg-[#151b2d]",
+            "py-6",
+            "border-r",
+            "border-white/5",
+            "shrink-0"
+          ],
+          "childCount": 8
+        },
+        {
+          "tag": "main",
+          "classes": [
+            "flex-1",
+            "flex",
+            "flex-col",
+            "min-w-0"
+          ],
+          "childCount": 61
+        }
+      ],
+      "buttons": [
+        {
+          "label": "FİLTRELE",
+          "classes": [
+            "w-full",
+            "py-3",
+            "bg-[#adc6ff]",
+            "text-[#00285d]",
+            "font-bold",
+            "text-xs",
+            "tracking-widest",
+            "uppercase",
+            "rounded-lg",
+            "mb-6",
+            "hover:brightness-110",
+            "transition-all"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "notifications",
+          "classes": [
+            "p-2",
+            "text-[#adc6ff]",
+            "hover:bg-[#151b2d]",
+            "rounded-full",
+            "transition-colors"
+          ],
+          "icon": "notifications",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [
+            "p-2",
+            "text-[#adc6ff]",
+            "hover:bg-[#151b2d]",
+            "rounded-full",
+            "transition-colors"
+          ],
+          "icon": "settings",
+          "action": "click-action"
+        },
+        {
+          "label": "TEKRAR DENE",
+          "classes": [
+            "px-6",
+            "py-2.5",
+            "bg-error",
+            "text-on-error",
+            "font-bold",
+            "text-xs",
+            "uppercase",
+            "tracking-widest",
+            "rounded-lg",
+            "hover:brightness-110",
+            "active:scale-95",
+            "transition-all"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "DETAYLAR",
+          "classes": [
+            "px-6",
+            "py-2.5",
+            "border",
+            "border-error/30",
+            "text-error",
+            "font-bold",
+            "text-xs",
+            "uppercase",
+            "tracking-widest",
+            "rounded-lg",
+            "hover:bg-error/10",
+            "transition-all"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "filter_alt_off\n                                FİLTRELERİ TEMİZLE",
+          "classes": [
+            "px-8",
+            "py-3",
+            "bg-surface-container-high",
+            "hover:bg-surface-container-highest",
+            "text-primary",
+            "font-bold",
+            "text-xs",
+            "uppercase",
+            "tracking-widest",
+            "rounded-lg",
+            "border",
+            "border-primary/20",
+            "transition-all",
+            "flex",
+            "items-center",
+            "gap-2"
+          ],
+          "icon": "filter_alt_off",
+          "action": "click-action"
+        },
+        {
+          "label": "filter_list",
+          "classes": [
+            "w-14",
+            "h-14",
+            "bg-secondary",
+            "rounded-full",
+            "flex",
+            "items-center",
+            "justify-center",
+            "text-on-secondary",
+            "shadow-2xl",
+            "active:scale-90",
+            "transition-transform"
+          ],
+          "icon": "filter_list",
+          "action": "click-action"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [
+        {
+          "label": "TÜMÜ",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "font-label",
+            "text-xs",
+            "tracking-wider",
+            "uppercase",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300"
+          ],
+          "icon": null
+        },
+        {
+          "label": "USGS",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "font-label",
+            "text-xs",
+            "tracking-wider",
+            "uppercase",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300"
+          ],
+          "icon": null
+        },
+        {
+          "label": "KANDİLLİ",
+          "href": "#",
+          "classes": [
+            "text-[#adc6ff]",
+            "border-b-2",
+            "border-[#adc6ff]",
+            "pb-1",
+            "font-label",
+            "text-xs",
+            "tracking-wider",
+            "uppercase",
+            "scale-0.98",
+            "transition-transform"
+          ],
+          "icon": null
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "map",
+        "list",
+        "query_stats",
+        "description",
+        "help",
+        "info",
+        "notifications",
+        "settings",
+        "wifi_off",
+        "progress_activity",
+        "search_off",
+        "filter_alt_off",
+        "filter_list"
+      ],
+      "images": [],
+      "cssVars": {},
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col",
+        "gap": "4"
+      },
+      "tabBar": [
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Raporlar",
+          "icon": "description",
+          "active": false
+        },
+        {
+          "label": "TÜMÜ",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "USGS",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "KANDİLLİ",
+          "icon": null,
+          "active": false
+        }
+      ],
+      "title": "Sistem Durumları (V2)"
+    },
+    "edd604a55a6c48e0becf9bbe82089e4e": {
+      "screenId": "edd604a55a6c48e0becf9bbe82089e4e",
+      "sections": [
+        {
+          "tag": "aside",
+          "classes": [
+            "hidden",
+            "md:flex",
+            "flex-col",
+            "h-full",
+            "border-r",
+            "border-white/5",
+            "py-6",
+            "bg-[#151b2d]",
+            "w-64"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "main",
+          "classes": [
+            "flex-1",
+            "relative",
+            "overflow-y-auto",
+            "bg-surface-container-lowest"
+          ],
+          "childCount": 40
+        }
+      ],
+      "buttons": [
+        {
+          "label": "FİLTRELE",
+          "classes": [
+            "w-full",
+            "py-3",
+            "bg-[#adc6ff]",
+            "text-[#00285d]",
+            "font-bold",
+            "text-xs",
+            "tracking-widest",
+            "uppercase",
+            "rounded-xl",
+            "hover:opacity-90",
+            "transition-opacity"
+          ],
+          "icon": null,
+          "action": "click-action"
+        },
+        {
+          "label": "notifications",
+          "classes": [
+            "p-2",
+            "text-[#adc6ff]",
+            "hover:bg-white/5",
+            "rounded-full",
+            "transition-colors"
+          ],
+          "icon": "notifications",
+          "action": "click-action"
+        },
+        {
+          "label": "settings",
+          "classes": [
+            "p-2",
+            "text-[#adc6ff]",
+            "hover:bg-white/5",
+            "rounded-full",
+            "transition-colors"
+          ],
+          "icon": "settings",
+          "action": "click-action"
+        },
+        {
+          "label": "arrow_back\nLİSTEYE DÖN",
+          "classes": [
+            "flex",
+            "items-center",
+            "gap-2",
+            "text-on-surface-variant",
+            "hover:text-on-surface",
+            "transition-colors"
+          ],
+          "icon": "arrow_back",
+          "action": "click-action"
+        },
+        {
+          "label": "share",
+          "classes": [
+            "p-2",
+            "bg-surface-container-highest",
+            "rounded-lg",
+            "hover:bg-surface-bright",
+            "transition-colors"
+          ],
+          "icon": "share",
+          "action": "click-action"
+        },
+        {
+          "label": "close",
+          "classes": [
+            "p-2",
+            "bg-surface-container-highest",
+            "rounded-lg",
+            "hover:bg-surface-bright",
+            "transition-colors"
+          ],
+          "icon": "close",
+          "action": "dismiss"
+        },
+        {
+          "label": "map\n                        HARİTADA GÖSTER",
+          "classes": [
+            "flex-1",
+            "py-4",
+            "bg-primary",
+            "text-on-primary-container",
+            "font-headline",
+            "font-bold",
+            "text-sm",
+            "rounded-xl",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-3",
+            "hover:opacity-90",
+            "transition-opacity"
+          ],
+          "icon": "map",
+          "action": "click-action"
+        },
+        {
+          "label": "ios_share\n                        PAYLAŞ",
+          "classes": [
+            "flex-1",
+            "py-4",
+            "border",
+            "border-outline-variant",
+            "text-on-surface",
+            "font-headline",
+            "font-bold",
+            "text-sm",
+            "rounded-xl",
+            "flex",
+            "items-center",
+            "justify-center",
+            "gap-3",
+            "hover:bg-white/5",
+            "transition-colors"
+          ],
+          "icon": "ios_share",
+          "action": "click-action"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [
+        {
+          "label": "map\n                    Harita",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "font-label",
+            "text-sm",
+            "uppercase",
+            "tracking-wider"
+          ],
+          "icon": "map"
+        },
+        {
+          "label": "list\n                    Liste",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#adc6ff]",
+            "font-bold",
+            "border-r-4",
+            "border-[#adc6ff]",
+            "bg-[#191f31]",
+            "translate-x-1",
+            "duration-200",
+            "font-label",
+            "text-sm",
+            "uppercase",
+            "tracking-wider"
+          ],
+          "icon": "list"
+        },
+        {
+          "label": "query_stats\n                    Analiz",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "font-label",
+            "text-sm",
+            "uppercase",
+            "tracking-wider"
+          ],
+          "icon": "query_stats"
+        },
+        {
+          "label": "description\n                    Raporlar",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "px-6",
+            "py-3",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:bg-[#191f31]",
+            "hover:opacity-100",
+            "transition-colors",
+            "font-label",
+            "text-sm",
+            "uppercase",
+            "tracking-wider"
+          ],
+          "icon": "description"
+        },
+        {
+          "label": "help\n                        Destek",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:opacity-100",
+            "transition-opacity",
+            "text-xs",
+            "uppercase",
+            "tracking-wider"
+          ],
+          "icon": "help"
+        },
+        {
+          "label": "info\n                        Hakkında",
+          "href": "#",
+          "classes": [
+            "flex",
+            "items-center",
+            "text-[#dce1fb]",
+            "opacity-50",
+            "hover:opacity-100",
+            "transition-opacity",
+            "text-xs",
+            "uppercase",
+            "tracking-wider"
+          ],
+          "icon": "info"
+        },
+        {
+          "label": "TÜMÜ",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300",
+            "font-label",
+            "text-[11px]",
+            "uppercase",
+            "tracking-widest"
+          ],
+          "icon": null
+        },
+        {
+          "label": "USGS",
+          "href": "#",
+          "classes": [
+            "text-[#dce1fb]",
+            "opacity-60",
+            "hover:text-[#adc6ff]",
+            "hover:opacity-100",
+            "transition-all",
+            "duration-300",
+            "font-label",
+            "text-[11px]",
+            "uppercase",
+            "tracking-widest"
+          ],
+          "icon": null
+        },
+        {
+          "label": "KANDİLLİ",
+          "href": "#",
+          "classes": [
+            "text-[#adc6ff]",
+            "border-b-2",
+            "border-[#adc6ff]",
+            "pb-1",
+            "font-label",
+            "text-[11px]",
+            "uppercase",
+            "tracking-widest"
+          ],
+          "icon": null
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "map",
+        "list",
+        "query_stats",
+        "description",
+        "help",
+        "info",
+        "notifications",
+        "settings",
+        "arrow_back",
+        "share",
+        "close",
+        "location_on",
+        "ios_share"
+      ],
+      "images": [
+        {
+          "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuC6CQb-WFB4Kus_sEV7vJhWRF0CnLqTewYbYjs0-_loajqJyw_aya3WxLreVCCJgCCelHBRyi8E-AWL5flQvTrEn7bzkbBzhqrbeKu9ts2gYrfhSNz8Q-fwpN8spnnvp9a6l-G1qp6E1Ozf7HBqPI",
+          "alt": "Technical satellite view map of the Mediterranean sea coastline with technical grid overlays and high contrast night mode styling"
+        }
+      ],
+      "cssVars": {},
+      "fonts": [
+        "Space Grotesk",
+        "Inter",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 2,
+        "flexDirection": "col",
+        "gap": "8"
+      },
+      "tabBar": [
+        {
+          "label": "Harita",
+          "icon": "map",
+          "active": false
+        },
+        {
+          "label": "Liste",
+          "icon": "list",
+          "active": false
+        },
+        {
+          "label": "Analiz",
+          "icon": "query_stats",
+          "active": false
+        },
+        {
+          "label": "Raporlar",
+          "icon": "description",
+          "active": false
+        },
+        {
+          "label": "TÜMÜ",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "USGS",
+          "icon": null,
+          "active": false
+        },
+        {
+          "label": "KANDİLLİ",
+          "icon": null,
+          "active": false
+        }
+      ],
+      "title": "Deprem Detayı (V2)"
+    }
+  }
+}

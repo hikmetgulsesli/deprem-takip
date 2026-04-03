@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>deprem-takip | Dijital Gözlemevi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#adc6ff",
+                        "secondary-fixed": "#ffdbca",
+                        "background": "#0c1324",
+                        "on-primary-container": "#00285d",
+                        "surface-bright": "#33394c",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "inverse-on-surface": "#2a3043",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container": "#191f31",
+                        "surface": "#0c1324",
+                        "primary": "#adc6ff",
+                        "surface-container-highest": "#2e3447",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-surface": "#dce1fb",
+                        "on-background": "#dce1fb",
+                        "surface-container-lowest": "#070d1f",
+                        "secondary-container": "#ec6a06",
+                        "on-secondary-fixed": "#341100",
+                        "surface-dim": "#0c1324",
+                        "secondary-fixed-dim": "#ffb690",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-tertiary-container": "#5c0008",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "secondary": "#ffb690",
+                        "primary-container": "#4d8eff",
+                        "on-primary-fixed-variant": "#004395",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#4a1c00",
+                        "tertiary-container": "#ff5451",
+                        "outline": "#8c909f",
+                        "on-secondary": "#552100",
+                        "on-primary": "#002e6a",
+                        "surface-variant": "#2e3447",
+                        "surface-container-high": "#23293c",
+                        "surface-container-low": "#151b2d",
+                        "on-tertiary-fixed-variant": "#930013",
+                        "on-tertiary-fixed": "#410004",
+                        "on-tertiary": "#68000a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-primary": "#005ac2",
+                        "outline-variant": "#424754",
+                        "tertiary": "#ffb3ad",
+                        "on-secondary-fixed-variant": "#783200"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0c1324; color: #dce1fb; overflow: hidden; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .magnitude-glow { filter: drop-shadow(0 0 8px currentColor); }
+        input[type="range"] { accent-color: #adc6ff; }
+    </style>
+</head>
+<body class="flex h-screen w-full">
+<!-- SideNavBar (The Anchor) -->
+<aside class="hidden md:flex flex-col h-full border-r border-white/5 py-6 bg-[#151b2d] text-[#adc6ff] w-64 shrink-0">
+<div class="px-6 mb-10">
+<h1 class="text-lg font-bold text-[#adc6ff] font-headline">DİJİTAL GÖZLEMEVİ</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] opacity-50 font-label">CANLI SİSMİK VERİ</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-6 py-4 text-[#adc6ff] font-bold border-r-4 border-[#adc6ff] bg-[#191f31] translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="map">map</span>
+<span class="uppercase text-xs tracking-wider font-label">Harita</span>
+</a>
+<a class="flex items-center px-6 py-4 text-[#dce1fb] opacity-50 hover:bg-[#191f31] hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="list">list</span>
+<span class="uppercase text-xs tracking-wider font-label">Liste</span>
+</a>
+<a class="flex items-center px-6 py-4 text-[#dce1fb] opacity-50 hover:bg-[#191f31] hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="query_stats">query_stats</span>
+<span class="uppercase text-xs tracking-wider font-label">Analiz</span>
+</a>
+<a class="flex items-center px-6 py-4 text-[#dce1fb] opacity-50 hover:bg-[#191f31] hover:opacity-100 transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="description">description</span>
+<span class="uppercase text-xs tracking-wider font-label">Raporlar</span>
+</a>
+</nav>
+<div class="px-6 mt-auto space-y-4">
+<button class="w-full py-3 bg-[#adc6ff] text-[#00285d] font-bold text-xs tracking-widest uppercase rounded-xl hover:opacity-90 transition-all">
+                FİLTRELE
+            </button>
+<div class="pt-6 border-t border-white/5 space-y-2">
+<a class="flex items-center text-xs opacity-50 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined text-sm mr-2" data-icon="help">help</span> Destek
+                </a>
+<a class="flex items-center text-xs opacity-50 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined text-sm mr-2" data-icon="info">info</span> Hakkında
+                </a>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col relative overflow-hidden">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-8 py-4 w-full bg-[#0c1324] z-20">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-black text-[#adc6ff] uppercase tracking-tighter font-headline">deprem-takip</div>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-[#adc6ff] border-b-2 border-[#adc6ff] pb-1 text-xs font-bold tracking-wider font-label uppercase" href="#">TÜMÜ</a>
+<a class="text-[#dce1fb] opacity-60 hover:text-[#adc6ff] hover:opacity-100 transition-all duration-300 text-xs font-bold tracking-wider font-label uppercase" href="#">USGS</a>
+<a class="text-[#dce1fb] opacity-60 hover:text-[#adc6ff] hover:opacity-100 transition-all duration-300 text-xs font-bold tracking-wider font-label uppercase" href="#">KANDİLLİ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#adc6ff] hover:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-[#adc6ff] hover:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Canvas Area (Map + Floating Panels) -->
+<div class="flex-1 relative bg-surface-container-lowest">
+<!-- Map Simulation Background -->
+<div class="absolute inset-0 z-0 bg-[#070d1f]">
+<div class="w-full h-full opacity-40 grayscale" data-alt="Dark stylized tactical map of the world with glowing grid lines and minimal topographical details in deep navy and charcoal tones" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBEtapfQDxfop1sRVSExDhBpbdX2oJVA9KA29SWSL7l_jHcj7hZAvJJryuAr3g614w6Y-m2f3hg7CN3qP-bYu--PB8YCwahvPmrrixwc2u5MTNQlWWDW4A9kuEfVyi6ilvoAGGlWKT4Z5Gu4wa8lF5mx1QO1jxHERelILVpJEdCAG9q4UuLFaC2vbsKSLeGYDvwcbmoJW-prhaU-Sdbi7eG1hzS9WW00hjW4VeULe9zn5tsgNitWyI_uq9H5QEc84Y5P0IsgXB8h_Q'); background-size: cover; background-position: center;"></div>
+<!-- Seismic Markers (Pulsing) -->
+<div class="absolute top-1/2 left-1/2 -translate-x-12 -translate-y-8 flex flex-col items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-16 h-16 bg-secondary/20 rounded-full animate-ping"></div>
+<div class="w-8 h-8 bg-secondary rounded-full border-2 border-surface-bright flex items-center justify-center text-[10px] font-bold text-on-secondary shadow-lg magnitude-glow">5.4</div>
+</div>
+<div class="mt-2 bg-surface-container-highest/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] border border-outline-variant/20">MALATYA, TR</div>
+</div>
+<div class="absolute top-[40%] left-[30%] flex flex-col items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-12 h-12 bg-primary/20 rounded-full animate-ping"></div>
+<div class="w-6 h-6 bg-primary rounded-full border-2 border-surface-bright flex items-center justify-center text-[8px] font-bold text-on-primary shadow-lg magnitude-glow">3.2</div>
+</div>
+<div class="mt-2 bg-surface-container-highest/80 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] border border-outline-variant/20">EGE DENİZİ</div>
+</div>
+<div class="absolute top-[65%] left-[55%] flex flex-col items-center group cursor-pointer">
+<div class="relative flex items-center justify-center">
+<div class="w-4 h-4 border-2 border-outline rounded-full bg-surface-container/50"></div>
+</div>
+<div class="mt-2 bg-surface-container-highest/80 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] border border-outline-variant/20 opacity-40">2.1</div>
+</div>
+</div>
+<!-- Left Filter Panel (Floating) -->
+<div class="absolute top-8 left-8 w-72 bg-surface-container-low/90 backdrop-blur-xl rounded-xl p-6 shadow-2xl z-10 border border-white/5">
+<div class="space-y-8">
+<!-- Magnitude Slider -->
+<div>
+<div class="flex justify-between items-center mb-4">
+<span class="text-[10px] font-bold tracking-widest uppercase font-label text-on-surface-variant">Büyüklük</span>
+<span class="text-xs font-headline font-bold text-primary">1.0 - 9.0</span>
+</div>
+<input class="w-full h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer" type="range"/>
+</div>
+<!-- Time Range Toggles -->
+<div>
+<span class="text-[10px] font-bold tracking-widest uppercase font-label text-on-surface-variant mb-4 block">Zaman Aralığı</span>
+<div class="grid grid-cols-1 gap-2">
+<button class="flex items-center justify-between px-4 py-2 bg-primary/10 border border-primary/30 rounded-lg text-xs font-medium text-primary">
+                                Son 24 Saat <span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+</button>
+<button class="flex items-center justify-between px-4 py-2 bg-surface-container-highest/50 border border-white/5 rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+                                7 Gün
+                            </button>
+<button class="flex items-center justify-between px-4 py-2 bg-surface-container-highest/50 border border-white/5 rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+                                30 Gün
+                            </button>
+</div>
+</div>
+<!-- Source Toggles -->
+<div>
+<span class="text-[10px] font-bold tracking-widest uppercase font-label text-on-surface-variant mb-4 block">Veri Kaynağı</span>
+<div class="flex bg-surface-container-lowest p-1 rounded-lg">
+<button class="flex-1 py-2 text-[10px] font-bold rounded-md bg-secondary text-on-secondary shadow-md transition-all">KANDİLLİ</button>
+<button class="flex-1 py-2 text-[10px] font-bold rounded-md text-on-surface-variant hover:text-on-surface transition-colors">USGS</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Activity Feed -->
+<div class="absolute bottom-8 left-8 right-8 z-10">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Event Card 1 -->
+<div class="bg-surface-container/90 backdrop-blur-md rounded-xl p-5 border-l-4 border-secondary flex items-start gap-4 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="text-4xl font-headline font-bold text-secondary leading-none group-hover:scale-105 transition-transform">5.4</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-sm font-headline font-bold truncate uppercase tracking-tight">YEŞİLYURT, MALATYA</h3>
+<div class="flex items-center gap-3 mt-2 opacity-60">
+<div class="flex items-center text-[10px] font-label">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="timer">timer</span> 12 DK ÖNCE
+                                </div>
+<div class="flex items-center text-[10px] font-label">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="straighten">straighten</span> 7.2 KM
+                                </div>
+</div>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="bg-surface-container/90 backdrop-blur-md rounded-xl p-5 border-l-4 border-primary/50 flex items-start gap-4 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="text-4xl font-headline font-bold text-primary leading-none group-hover:scale-105 transition-transform">3.2</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-sm font-headline font-bold truncate uppercase tracking-tight">EGE DENİZİ</h3>
+<div class="flex items-center gap-3 mt-2 opacity-60">
+<div class="flex items-center text-[10px] font-label">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="timer">timer</span> 48 DK ÖNCE
+                                </div>
+<div class="flex items-center text-[10px] font-label">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="straighten">straighten</span> 10.5 KM
+                                </div>
+</div>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="bg-surface-container/90 backdrop-blur-md rounded-xl p-5 border-l-4 border-outline flex items-start gap-4 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="text-4xl font-headline font-bold text-on-surface-variant leading-none group-hover:scale-105 transition-transform">2.1</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-sm font-headline font-bold truncate uppercase tracking-tight">DATÇA, MUĞLA</h3>
+<div class="flex items-center gap-3 mt-2 opacity-60">
+<div class="flex items-center text-[10px] font-label">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="timer">timer</span> 2 SAAT ÖNCE
+                                </div>
+<div class="flex items-center text-[10px] font-label">
+<span class="material-symbols-outlined text-[12px] mr-1" data-icon="straighten">straighten</span> 5.0 KM
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Controls (Floating Right) -->
+<div class="absolute right-8 top-1/2 -translate-y-12 flex flex-col gap-2 z-10">
+<button class="w-10 h-10 bg-surface-container-high/80 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/5 hover:bg-primary/20 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-high/80 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/5 hover:bg-primary/20 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<div class="h-4"></div>
+<button class="w-10 h-10 bg-surface-container-high/80 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/5 hover:bg-primary/20 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="my_location">my_location</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-high/80 backdrop-blur-md rounded-lg flex items-center justify-center border border-white/5 hover:bg-primary/20 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#151b2d] flex justify-around items-center px-4 z-50">
+<button class="flex flex-col items-center text-[#adc6ff]">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-[8px] font-bold uppercase mt-1">Harita</span>
+</button>
+<button class="flex flex-col items-center text-[#dce1fb] opacity-50">
+<span class="material-symbols-outlined" data-icon="list">list</span>
+<span class="text-[8px] font-bold uppercase mt-1">Liste</span>
+</button>
+<div class="w-12 h-12 bg-secondary rounded-full -translate-y-6 flex items-center justify-center shadow-lg border-4 border-[#0c1324] text-on-secondary">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</div>
+<button class="flex flex-col items-center text-[#dce1fb] opacity-50">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="text-[8px] font-bold uppercase mt-1">Analiz</span>
+</button>
+<button class="flex flex-col items-center text-[#dce1fb] opacity-50">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[8px] font-bold uppercase mt-1">Profil</span>
+</button>
+</nav>
+</body></html>

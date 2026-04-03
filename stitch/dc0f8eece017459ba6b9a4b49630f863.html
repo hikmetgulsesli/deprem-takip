@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deprem Takip | Dijital Gözlemevi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#adc6ff",
+                        "secondary-fixed": "#ffdbca",
+                        "background": "#0c1324",
+                        "on-primary-container": "#00285d",
+                        "surface-bright": "#33394c",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "inverse-on-surface": "#2a3043",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container": "#191f31",
+                        "surface": "#0c1324",
+                        "primary": "#adc6ff",
+                        "surface-container-highest": "#2e3447",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-surface": "#dce1fb",
+                        "on-background": "#dce1fb",
+                        "surface-container-lowest": "#070d1f",
+                        "secondary-container": "#ec6a06",
+                        "on-secondary-fixed": "#341100",
+                        "surface-dim": "#0c1324",
+                        "secondary-fixed-dim": "#ffb690",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-tertiary-container": "#5c0008",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "secondary": "#ffb690",
+                        "primary-container": "#4d8eff",
+                        "on-primary-fixed-variant": "#004395",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#4a1c00",
+                        "tertiary-container": "#ff5451",
+                        "outline": "#8c909f",
+                        "on-secondary": "#552100",
+                        "on-primary": "#002e6a",
+                        "surface-variant": "#2e3447",
+                        "surface-container-high": "#23293c",
+                        "surface-container-low": "#151b2d",
+                        "on-tertiary-fixed-variant": "#930013",
+                        "on-tertiary-fixed": "#410004",
+                        "on-tertiary": "#68000a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-primary": "#005ac2",
+                        "outline-variant": "#424754",
+                        "tertiary": "#ffb3ad",
+                        "on-secondary-fixed-variant": "#783200"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0c1324; color: #dce1fb; margin: 0; overflow: hidden; }
+        .font-headline { font-family: 'Space Grotesk', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0c1324; }
+        ::-webkit-scrollbar-thumb { background: #2e3447; border-radius: 10px; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full border-r border-white/5 py-6 bg-[#151b2d] text-[#adc6ff] w-64 shrink-0">
+<div class="px-6 mb-10">
+<h1 class="text-lg font-bold text-[#adc6ff] font-headline tracking-tight">DİJİTAL GÖZLEMEVİ</h1>
+<p class="text-[10px] opacity-50 tracking-widest font-medium uppercase mt-1">CANLI SİSMİK VERİ</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-6 py-3 text-[#dce1fb] opacity-50 hover:bg-[#191f31] hover:opacity-100 transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">map</span>
+<span class="text-sm font-medium font-label uppercase tracking-wider">Harita</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#adc6ff] font-bold border-r-4 border-[#adc6ff] bg-[#191f31] translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined mr-3">list</span>
+<span class="text-sm font-medium font-label uppercase tracking-wider">Liste</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#dce1fb] opacity-50 hover:bg-[#191f31] hover:opacity-100 transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">query_stats</span>
+<span class="text-sm font-medium font-label uppercase tracking-wider">Analiz</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#dce1fb] opacity-50 hover:bg-[#191f31] hover:opacity-100 transition-colors group" href="#">
+<span class="material-symbols-outlined mr-3">description</span>
+<span class="text-sm font-medium font-label uppercase tracking-wider">Raporlar</span>
+</a>
+</nav>
+<div class="px-6 mt-6">
+<button class="w-full py-3 bg-[#191f31] text-[#adc6ff] text-xs font-bold font-label uppercase tracking-widest hover:bg-surface-container-highest transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">tune</span>
+                FİLTRELE
+            </button>
+</div>
+<div class="mt-auto pt-6 border-t border-white/5">
+<a class="flex items-center px-6 py-2 text-[#dce1fb] opacity-50 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined mr-3 text-sm">help</span>
+<span class="text-xs font-label uppercase tracking-wider">Destek</span>
+</a>
+<a class="flex items-center px-6 py-2 text-[#dce1fb] opacity-50 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined mr-3 text-sm">info</span>
+<span class="text-xs font-label uppercase tracking-wider">Hakkında</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-8 py-4 w-full bg-[#0c1324] text-[#adc6ff]">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-black text-[#adc6ff] uppercase tracking-tighter font-headline">deprem-takip</div>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-[#adc6ff] border-b-2 border-[#adc6ff] pb-1 text-xs font-label uppercase tracking-wider" href="#">TÜMÜ</a>
+<a class="text-[#dce1fb] opacity-60 hover:text-[#adc6ff] hover:opacity-100 transition-all duration-300 text-xs font-label uppercase tracking-wider" href="#">USGS</a>
+<a class="text-[#dce1fb] opacity-60 hover:text-[#adc6ff] hover:opacity-100 transition-all duration-300 text-xs font-label uppercase tracking-wider" href="#">KANDİLLİ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#dce1fb] opacity-60 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-[#dce1fb] opacity-60 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Body -->
+<main class="flex-1 flex flex-col md:flex-row overflow-hidden">
+<!-- List View (Center) -->
+<section class="flex-1 flex flex-col p-6 min-w-0">
+<div class="mb-6 flex justify-between items-end">
+<div>
+<h2 class="text-3xl font-bold font-headline tracking-tight text-on-surface">Son Depremler</h2>
+<p class="text-on-surface-variant text-sm mt-1">Türkiye ve yakın çevresindeki sismik hareketler</p>
+</div>
+<div class="flex gap-2">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-high text-[10px] font-bold font-label text-primary uppercase tracking-widest border border-primary/10">CANLI YAYIN</span>
+</div>
+</div>
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-6 py-3 bg-surface-container-low rounded-t-xl text-[10px] font-bold font-label text-on-surface-variant uppercase tracking-widest">
+<div class="col-span-1 flex items-center cursor-pointer hover:text-primary transition-colors">
+                        Büyüklük <span class="material-symbols-outlined text-[12px] ml-1">expand_more</span>
+</div>
+<div class="col-span-4 flex items-center cursor-pointer hover:text-primary transition-colors">Yer / Mevki</div>
+<div class="col-span-3 flex items-center cursor-pointer hover:text-primary transition-colors">
+                        Tarih / Saat <span class="material-symbols-outlined text-[12px] ml-1">unfold_more</span>
+</div>
+<div class="col-span-2 text-right">Derinlik</div>
+<div class="col-span-2 text-right">Kaynak</div>
+</div>
+<!-- Table Body -->
+<div class="flex-1 overflow-y-auto space-y-1 bg-surface-container-lowest/50">
+<!-- Row 1 (Critical) -->
+<div class="grid grid-cols-12 gap-4 px-6 py-5 items-center bg-surface-container hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-error">
+<div class="col-span-1">
+<span class="text-3xl font-black font-headline text-error leading-none tracking-tighter">6.4</span>
+</div>
+<div class="col-span-4">
+<div class="text-on-surface font-bold font-headline text-lg leading-tight uppercase tracking-tight">KAHRAMANMARAŞ</div>
+<div class="text-on-surface-variant text-[10px] font-label uppercase tracking-wider">PAZARCIK (MERKEZ ÜSSÜ)</div>
+</div>
+<div class="col-span-3">
+<div class="text-on-surface text-sm font-medium">12.05.2024</div>
+<div class="text-on-surface-variant text-[10px] font-label tabular-nums">14:22:18 (UTC+3)</div>
+</div>
+<div class="col-span-2 text-right">
+<div class="text-on-surface text-sm font-bold font-label uppercase">7.2 KM</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-bold font-label rounded">KANDİLLİ</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 gap-4 px-6 py-5 items-center bg-surface-container hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-secondary">
+<div class="col-span-1">
+<span class="text-3xl font-black font-headline text-secondary leading-none tracking-tighter">4.8</span>
+</div>
+<div class="col-span-4">
+<div class="text-on-surface font-bold font-headline text-lg leading-tight uppercase tracking-tight">EGE DENİZİ</div>
+<div class="text-on-surface-variant text-[10px] font-label uppercase tracking-wider">MUĞLA AÇIKLARI</div>
+</div>
+<div class="col-span-3">
+<div class="text-on-surface text-sm font-medium">12.05.2024</div>
+<div class="text-on-surface-variant text-[10px] font-label tabular-nums">13:05:44 (UTC+3)</div>
+</div>
+<div class="col-span-2 text-right">
+<div class="text-on-surface text-sm font-bold font-label uppercase">12.4 KM</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold font-label rounded">USGS</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 gap-4 px-6 py-5 items-center bg-surface-container hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-transparent">
+<div class="col-span-1">
+<span class="text-3xl font-black font-headline text-on-surface-variant leading-none tracking-tighter">3.2</span>
+</div>
+<div class="col-span-4">
+<div class="text-on-surface font-bold font-headline text-lg leading-tight uppercase tracking-tight">MALATYA</div>
+<div class="text-on-surface-variant text-[10px] font-label uppercase tracking-wider">YEŞİLYURT</div>
+</div>
+<div class="col-span-3">
+<div class="text-on-surface text-sm font-medium">12.05.2024</div>
+<div class="text-on-surface-variant text-[10px] font-label tabular-nums">11:58:02 (UTC+3)</div>
+</div>
+<div class="col-span-2 text-right">
+<div class="text-on-surface text-sm font-bold font-label uppercase">5.0 KM</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-bold font-label rounded">KANDİLLİ</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 gap-4 px-6 py-5 items-center bg-surface-container hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-transparent">
+<div class="col-span-1">
+<span class="text-3xl font-black font-headline text-on-surface-variant leading-none tracking-tighter">2.9</span>
+</div>
+<div class="col-span-4">
+<div class="text-on-surface font-bold font-headline text-lg leading-tight uppercase tracking-tight">BOLU</div>
+<div class="text-on-surface-variant text-[10px] font-label uppercase tracking-wider">MERKEZ</div>
+</div>
+<div class="col-span-3">
+<div class="text-on-surface text-sm font-medium">12.05.2024</div>
+<div class="text-on-surface-variant text-[10px] font-label tabular-nums">10:12:33 (UTC+3)</div>
+</div>
+<div class="col-span-2 text-right">
+<div class="text-on-surface text-sm font-bold font-label uppercase">8.1 KM</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="px-2 py-1 bg-secondary/10 text-secondary text-[10px] font-bold font-label rounded">KANDİLLİ</span>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="grid grid-cols-12 gap-4 px-6 py-5 items-center bg-surface-container hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-transparent">
+<div class="col-span-1">
+<span class="text-3xl font-black font-headline text-on-surface-variant leading-none tracking-tighter">2.4</span>
+</div>
+<div class="col-span-4">
+<div class="text-on-surface font-bold font-headline text-lg leading-tight uppercase tracking-tight">AKDENİZ</div>
+<div class="text-on-surface-variant text-[10px] font-label uppercase tracking-wider">ANTALYA KÖRFEZİ</div>
+</div>
+<div class="col-span-3">
+<div class="text-on-surface text-sm font-medium">12.05.2024</div>
+<div class="text-on-surface-variant text-[10px] font-label tabular-nums">09:45:12 (UTC+3)</div>
+</div>
+<div class="col-span-2 text-right">
+<div class="text-on-surface text-sm font-bold font-label uppercase">22.0 KM</div>
+</div>
+<div class="col-span-2 text-right">
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold font-label rounded">USGS</span>
+</div>
+</div>
+</div>
+<!-- Summary Stats Bar -->
+<div class="mt-4 grid grid-cols-3 gap-4 bg-surface-container-low p-4 rounded-xl">
+<div class="flex flex-col">
+<span class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Toplam Aktivite (24sa)</span>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold font-headline text-primary">142</span>
+<span class="text-[10px] text-primary/60 font-medium">+12% vs dün</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Ortalama Büyüklük</span>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold font-headline text-secondary">3.4</span>
+<span class="text-[10px] text-secondary/60 font-medium">Sabit sismik seyir</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">En Yüksek Şiddet</span>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-bold font-headline text-error">6.4</span>
+<span class="text-[10px] text-error/60 font-medium">Kahramanmaraş</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar Filter Panel (Right) -->
+<aside class="w-80 border-l border-white/5 bg-surface-container-low flex flex-col p-6 space-y-8">
+<div>
+<h3 class="text-xs font-bold font-label uppercase tracking-widest text-[#adc6ff] mb-4">Görünüm Filtreleri</h3>
+<!-- Magnitude Filter -->
+<div class="space-y-3">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">Minimum Büyüklük (M)</label>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-2 text-[10px] font-bold font-label rounded bg-surface-container-highest border border-outline-variant text-on-surface">ALL</button>
+<button class="py-2 text-[10px] font-bold font-label rounded bg-surface-container-highest border border-outline-variant text-on-surface">3.0+</button>
+<button class="py-2 text-[10px] font-bold font-label rounded bg-primary text-on-primary-container">4.0+</button>
+<button class="py-2 text-[10px] font-bold font-label rounded bg-surface-container-highest border border-outline-variant text-on-surface">5.0+</button>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold font-label uppercase tracking-widest text-[#adc6ff] mb-4">Veri Kaynakları</h3>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-3 rounded bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer border border-transparent hover:border-white/10">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-xs font-medium font-label uppercase">Kandilli Rasathanesi</span>
+</div>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer border border-transparent hover:border-white/10">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-xs font-medium font-label uppercase">USGS Global Feed</span>
+</div>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded bg-surface-container/50 opacity-40 cursor-not-allowed grayscale">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-on-surface-variant"></span>
+<span class="text-xs font-medium font-label uppercase">EMSC Europe</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">radio_button_unchecked</span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold font-label uppercase tracking-widest text-[#adc6ff] mb-4">Küçük Harita Önizleme</h3>
+<div class="relative h-48 rounded-xl overflow-hidden bg-surface-container-highest">
+<img alt="dark mode satellite map of Turkey with seismic activity hot spots marked by glowing rings" class="w-full h-full object-cover opacity-60" data-location="Turkey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1X4SmEtqqri1QEgc-LhOXpt3cPpNTdEh5nR1LwR1ZCFuOoLdZQkb3xwsBySUTbTHeRXs_pNruD9z9EVHCauclKqXte1Jl4Qz911q6fYhAGLX4sTJwsseQHTvM9MqmSP55bM22Ih9RVAKL9RT-uGu6oJ9xMr1QKghXobewoodba0MV6OQyJOT5_nVMCGL7lRmdLB_toNsGT8mLjKON67NlEk09vwywfI4p_dRqCPAUHYEASKevBZK4Z2ubhvvYy0tTUCKNiyRw7oA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<span class="w-2 h-2 bg-error rounded-full animate-pulse"></span>
+<span class="text-[10px] font-bold font-label uppercase tracking-widest text-on-surface">Son Merkez Üssü</span>
+</div>
+</div>
+</div>
+<div class="mt-auto">
+<div class="p-4 bg-primary/5 border border-primary/10 rounded-xl">
+<p class="text-[10px] font-medium text-primary/80 uppercase tracking-widest leading-relaxed">
+                            Uyarı: Veriler otomatik istasyonlardan alınmaktadır. Kesin bilgiler için resmi raporları bekleyiniz.
+                        </p>
+</div>
+</div>
+</aside>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sismik Analiz Paneli - Dijital Gözlemevi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#adc6ff",
+                        "secondary-fixed": "#ffdbca",
+                        "background": "#0c1324",
+                        "on-primary-container": "#00285d",
+                        "surface-bright": "#33394c",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "inverse-on-surface": "#2a3043",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container": "#191f31",
+                        "surface": "#0c1324",
+                        "primary": "#adc6ff",
+                        "surface-container-highest": "#2e3447",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-surface": "#dce1fb",
+                        "on-background": "#dce1fb",
+                        "surface-container-lowest": "#070d1f",
+                        "secondary-container": "#ec6a06",
+                        "on-secondary-fixed": "#341100",
+                        "surface-dim": "#0c1324",
+                        "secondary-fixed-dim": "#ffb690",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-tertiary-container": "#5c0008",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "secondary": "#ffb690",
+                        "primary-container": "#4d8eff",
+                        "on-primary-fixed-variant": "#004395",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#4a1c00",
+                        "tertiary-container": "#ff5451",
+                        "outline": "#8c909f",
+                        "on-secondary": "#552100",
+                        "on-primary": "#002e6a",
+                        "surface-variant": "#2e3447",
+                        "surface-container-high": "#23293c",
+                        "surface-container-low": "#151b2d",
+                        "on-tertiary-fixed-variant": "#930013",
+                        "on-tertiary-fixed": "#410004",
+                        "on-tertiary": "#68000a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-primary": "#005ac2",
+                        "outline-variant": "#424754",
+                        "tertiary": "#ffb3ad",
+                        "on-secondary-fixed-variant": "#783200"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .magnitude { font-family: 'Space Grotesk', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col h-full border-r border-white/5 py-6 bg-[#151b2d] w-64 shrink-0">
+<div class="px-6 mb-10">
+<h1 class="text-lg font-bold text-[#adc6ff] font-headline uppercase tracking-tight">DİJİTAL GÖZLEMEVİ</h1>
+<p class="text-[10px] text-[#adc6ff] opacity-60 tracking-[0.2em] font-label uppercase">CANLI SİSMİK VERİ</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-6 py-4 text-[#dce1fb] opacity-50 hover:bg-[#191f31] hover:opacity-100 transition-colors group" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="map">map</span>
+<span class="font-label text-sm uppercase tracking-wider">Harita</span>
+</a>
+<a class="flex items-center px-6 py-4 text-[#dce1fb] opacity-50 hover:bg-[#191f31] hover:opacity-100 transition-colors group" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="list">list</span>
+<span class="font-label text-sm uppercase tracking-wider">Liste</span>
+</a>
+<a class="flex items-center px-6 py-4 text-[#adc6ff] font-bold border-r-4 border-[#adc6ff] bg-[#191f31] translate-x-1 duration-200 group" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="query_stats">query_stats</span>
+<span class="font-label text-sm uppercase tracking-wider">Analiz</span>
+</a>
+<a class="flex items-center px-6 py-4 text-[#dce1fb] opacity-50 hover:bg-[#191f31] hover:opacity-100 transition-colors group" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="description">description</span>
+<span class="font-label text-sm uppercase tracking-wider">Raporlar</span>
+</a>
+</nav>
+<div class="px-6 py-4">
+<button class="w-full py-3 bg-surface-container-highest text-primary font-label text-xs tracking-widest rounded-xl hover:bg-surface-bright transition-all">
+                    FİLTRELE
+                </button>
+</div>
+<div class="mt-auto border-t border-white/5 pt-4">
+<a class="flex items-center px-6 py-3 text-[#dce1fb] opacity-50 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="help">help</span>
+<span class="font-label text-xs uppercase tracking-wider">Destek</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#dce1fb] opacity-50 hover:opacity-100 transition-all" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="info">info</span>
+<span class="font-label text-xs uppercase tracking-wider">Hakkında</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface overflow-y-auto no-scrollbar">
+<!-- TopNavBar Component -->
+<header class="flex justify-between items-center px-8 py-4 w-full bg-[#0c1324] sticky top-0 z-50">
+<div class="flex items-center space-x-12">
+<div class="text-2xl font-black text-[#adc6ff] uppercase tracking-tighter font-headline">deprem-takip</div>
+<nav class="hidden lg:flex items-center space-x-8">
+<a class="text-[#dce1fb] opacity-60 font-label text-[11px] tracking-wider uppercase hover:text-[#adc6ff] hover:opacity-100 transition-all duration-300" href="#">TÜMÜ</a>
+<a class="text-[#adc6ff] border-b-2 border-[#adc6ff] pb-1 font-label text-[11px] tracking-wider uppercase" href="#">USGS</a>
+<a class="text-[#dce1fb] opacity-60 font-label text-[11px] tracking-wider uppercase hover:text-[#adc6ff] hover:opacity-100 transition-all duration-300" href="#">KANDİLLİ</a>
+</nav>
+</div>
+<div class="flex items-center space-x-6">
+<button class="text-[#adc6ff] opacity-80 hover:opacity-100 transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-[#adc6ff] opacity-80 hover:opacity-100 transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 max-w-[1600px] mx-auto w-full space-y-8">
+<!-- Hero Section: Advanced Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-3 bg-surface-container-low p-8 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-headline text-3xl font-bold mb-2">SİSMİK YOĞUNLUK ANALİZİ</h2>
+<p class="text-on-surface-variant font-label text-sm uppercase tracking-wide">Son 24 Saatlik Frekans Değişimi</p>
+<div class="mt-12 h-64 flex items-end space-x-1">
+<!-- Mock Sparkline Charts -->
+<div class="w-full h-full relative">
+<div class="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-primary/20 to-transparent"></div>
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 1000 200">
+<path d="M0,180 Q100,120 200,160 T400,80 T600,140 T800,40 T1000,100" fill="none" stroke="#adc6ff" stroke-width="3"></path>
+<circle cx="800" cy="40" fill="#adc6ff" r="4"></circle>
+</svg>
+<div class="absolute top-[10%] left-[80%] -translate-x-1/2">
+<div class="bg-primary/10 backdrop-blur-md border border-primary/20 px-3 py-1 rounded-full text-[10px] text-primary font-bold">ZİRVE: 6.2 ML</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="query_stats">query_stats</span>
+</div>
+</div>
+<div class="bg-surface-container p-8 rounded-xl flex flex-col justify-between">
+<div>
+<p class="font-label text-xs uppercase tracking-[0.2em] text-secondary opacity-80">RİSK SKORU</p>
+<div class="font-headline text-6xl font-bold mt-2 text-secondary">74<span class="text-xl opacity-40">/100</span></div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end border-b border-white/5 pb-2">
+<span class="text-xs text-on-surface-variant font-label uppercase">Anomali</span>
+<span class="text-sm font-bold text-secondary-fixed">+12.4%</span>
+</div>
+<div class="flex justify-between items-end border-b border-white/5 pb-2">
+<span class="text-xs text-on-surface-variant font-label uppercase">Güven Aralığı</span>
+<span class="text-sm font-bold">98.2%</span>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-relaxed">Tahmin modelleri Marmara Segmenti üzerinde sismik boşluk gerilimi saptadı.</p>
+</div>
+</div>
+</div>
+<!-- Heatmap & Distribution Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Global Heatmap Visualization -->
+<div class="lg:col-span-2 bg-surface-container-low rounded-xl overflow-hidden flex flex-col">
+<div class="p-6 border-b border-white/5 flex justify-between items-center">
+<h3 class="font-headline text-xl font-medium tracking-tight">AKTİVİTE YOĞUNLUK HARİTASI</h3>
+<div class="flex space-x-2">
+<div class="w-3 h-3 bg-primary rounded-full"></div>
+<div class="w-3 h-3 bg-secondary rounded-full"></div>
+<div class="w-3 h-3 bg-error rounded-full"></div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-lowest relative min-h-[400px]">
+<img alt="Dark minimalist world map with glowing heat spots and seismic data overlay" class="w-full h-full object-cover opacity-40 grayscale" data-location="Turkey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArtMDf8MDyr8hHRON3BoXLzMz1-tdZg0fKcJO5hSgTrXpSY_ZhCH5wo1YnOpawhS-LThPFizyYE2MaT69eniqYmlBPvdpMYUbORhNOmwDFYNujhOOUAIp6srlAlkm1ohZpGs35Oz_yVEaDJXnNoZXj7ku3I4Ho0XRVrG9TjKSit9g6_h777DTy9iJew0rHYo8rMXR69gxKGKPxVzZ0WeREFqJCYTx77-A5LpA3Tfmi0GM7sdaI_--BwuaGPcJJMWNFCdt4Bm2S3ZY"/>
+<!-- Heatmap Overlays -->
+<div class="absolute top-[45%] left-[55%] w-32 h-32 bg-secondary/20 rounded-full blur-3xl"></div>
+<div class="absolute top-[48%] left-[52%] w-12 h-12 bg-secondary/40 rounded-full blur-xl border border-secondary/20"></div>
+<div class="absolute top-[48%] left-[52%] flex flex-col items-center">
+<div class="w-2 h-2 bg-secondary rounded-full animate-ping"></div>
+<div class="bg-surface-container-highest/80 backdrop-blur-lg px-3 py-2 rounded-lg mt-2 border border-white/10">
+<div class="text-[10px] font-bold text-secondary">MARMARA DENİZİ</div>
+<div class="text-[14px] font-headline">MAG: 4.2</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Stats: Distribution -->
+<div class="space-y-6">
+<div class="bg-surface-container p-6 rounded-xl">
+<h4 class="font-label text-xs uppercase tracking-widest text-on-surface-variant mb-6">DERİNLİK DAĞILIMI</h4>
+<div class="space-y-6">
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<span class="text-[10px] font-label text-on-surface uppercase">0 - 10 KM (Sığ)</span>
+<span class="text-[10px] font-bold">64%</span>
+</div>
+<div class="overflow-hidden h-1 text-xs flex rounded bg-surface-container-highest">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary" style="width:64%"></div>
+</div>
+</div>
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<span class="text-[10px] font-label text-on-surface uppercase">10 - 30 KM (Orta)</span>
+<span class="text-[10px] font-bold">28%</span>
+</div>
+<div class="overflow-hidden h-1 text-xs flex rounded bg-surface-container-highest">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-secondary" style="width:28%"></div>
+</div>
+</div>
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<span class="text-[10px] font-label text-on-surface uppercase">30+ KM (Derin)</span>
+<span class="text-[10px] font-bold">8%</span>
+</div>
+<div class="overflow-hidden h-1 text-xs flex rounded bg-surface-container-highest">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-error" style="width:8%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl border-l-4 border-primary">
+<h4 class="font-label text-xs uppercase tracking-widest text-primary mb-2">SİSMİK BOŞLUK UYARISI</h4>
+<p class="text-xs leading-relaxed text-on-surface-variant">Kuzey Anadolu Fay Hattı segment-B üzerinde 12 yıldır devam eden sessizlik, birikmiş enerjinin kritik eşiğe yaklaştığını göstermektedir.</p>
+<div class="mt-4 flex items-center text-primary">
+<span class="material-symbols-outlined text-sm mr-2" data-icon="warning">warning</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Detaylı Analiz Görüntüle</span>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl relative overflow-hidden h-32">
+<div class="absolute inset-0 opacity-10">
+<img alt="Abstract digital grid with flowing blue lines representing data transfer" class="w-full h-full object-cover" data-alt="Digital network grid with glowing blue nodes and connecting lines on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy0sqxe3a57HXqtezL5zYMkyMRkWyI7BXwApddBB4Qe7l_Qh4otNYEpStNAJ7IDK9iu4IeDsOZcOyIOnlB8x5BfcZDreEsirCFHDjrBwWhOv7K5-Mrl2QjKjGi9rVDTyHAYvt5KpIBTnBqsmKjbJWIgN8GcgZ7AUa0gNvKF_5sTNMmsgK6J8f151ZyRZvAr15vjzp0Cd2u5sHRg7q--yhTZ6cXGQblLmglPnt9rjs5AmWsBYX9XinwybzY3nZNec42xtPsZiDHOM8"/>
+</div>
+<div class="relative z-10">
+<p class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">VERİ KAYNAĞI GÜVENİ</p>
+<p class="text-2xl font-headline font-bold mt-1 text-primary-fixed">OPTIMAL</p>
+<p class="text-[10px] text-on-surface-variant mt-1">48 İstasyon Aktif</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Periodic Analysis Feed -->
+<div class="bg-surface-container-low rounded-xl p-8">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline text-2xl font-bold">SON ANALİZ BULGULARI</h3>
+<button class="bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-lg text-xs font-bold transition-all uppercase tracking-widest">TÜMÜNÜ DIŞA AKTAR</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Analysis Card 1 -->
+<div class="bg-surface-container p-6 rounded-xl group hover:bg-surface-container-high transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="magnitude text-4xl font-bold text-primary">4.8</div>
+<div class="text-right">
+<div class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">14:22:10</div>
+<div class="text-sm font-bold uppercase">MALATYA</div>
+</div>
+</div>
+<div class="h-12 w-full flex items-center space-x-1 mb-4 opacity-50 group-hover:opacity-100 transition-opacity">
+<div class="h-2 w-1 bg-primary-container rounded-full"></div>
+<div class="h-4 w-1 bg-primary-container rounded-full"></div>
+<div class="h-8 w-1 bg-primary-container rounded-full"></div>
+<div class="h-5 w-1 bg-primary-container rounded-full"></div>
+<div class="h-3 w-1 bg-primary-container rounded-full"></div>
+<div class="h-6 w-1 bg-primary-container rounded-full"></div>
+<div class="h-10 w-1 bg-primary rounded-full"></div>
+<div class="h-4 w-1 bg-primary-container rounded-full"></div>
+<div class="h-2 w-1 bg-primary-container rounded-full"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-label text-on-surface-variant uppercase tracking-wider">
+<span>DERİNLİK: 7.0 KM</span>
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded">USGS VERİSİ</span>
+</div>
+</div>
+<!-- Analysis Card 2 -->
+<div class="bg-surface-container p-6 rounded-xl group hover:bg-surface-container-high transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="magnitude text-4xl font-bold text-secondary">3.1</div>
+<div class="text-right">
+<div class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">13:05:44</div>
+<div class="text-sm font-bold uppercase">MARMARA EREĞLİSİ</div>
+</div>
+</div>
+<div class="h-12 w-full flex items-center space-x-1 mb-4 opacity-50 group-hover:opacity-100 transition-opacity">
+<div class="h-2 w-1 bg-secondary-container rounded-full"></div>
+<div class="h-3 w-1 bg-secondary-container rounded-full"></div>
+<div class="h-5 w-1 bg-secondary-container rounded-full"></div>
+<div class="h-4 w-1 bg-secondary-container rounded-full"></div>
+<div class="h-6 w-1 bg-secondary rounded-full"></div>
+<div class="h-3 w-1 bg-secondary-container rounded-full"></div>
+<div class="h-2 w-1 bg-secondary-container rounded-full"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-label text-on-surface-variant uppercase tracking-wider">
+<span>DERİNLİK: 12.4 KM</span>
+<span class="bg-secondary/20 text-secondary px-2 py-0.5 rounded">KANDİLLİ VERİSİ</span>
+</div>
+</div>
+<!-- Analysis Card 3 -->
+<div class="bg-surface-container p-6 rounded-xl group hover:bg-surface-container-high transition-all">
+<div class="flex justify-between items-start mb-4">
+<div class="magnitude text-4xl font-bold text-tertiary">2.4</div>
+<div class="text-right">
+<div class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">12:58:12</div>
+<div class="text-sm font-bold uppercase">EGE DENİZİ</div>
+</div>
+</div>
+<div class="h-12 w-full flex items-center space-x-1 mb-4 opacity-50 group-hover:opacity-100 transition-opacity">
+<div class="h-2 w-1 bg-surface-variant rounded-full"></div>
+<div class="h-2 w-1 bg-surface-variant rounded-full"></div>
+<div class="h-3 w-1 bg-tertiary-container rounded-full"></div>
+<div class="h-4 w-1 bg-tertiary rounded-full"></div>
+<div class="h-2 w-1 bg-surface-variant rounded-full"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-label text-on-surface-variant uppercase tracking-wider">
+<span>DERİNLİK: 5.8 KM</span>
+<span class="bg-white/5 text-on-surface-variant px-2 py-0.5 rounded">MIKRO AKTİVİTE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Floating Action Button (Optional) -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-105 transition-transform z-[100] md:hidden">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+</body></html>

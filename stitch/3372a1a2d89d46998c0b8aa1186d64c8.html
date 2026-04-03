@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#0c1324",
+                    "surface-tint": "#ffb59d",
+                    "tertiary": "#59d5fb",
+                    "primary-container": "#ff6b35",
+                    "background": "#0c1324",
+                    "surface-container-lowest": "#070e1e",
+                    "outline-variant": "#594139",
+                    "primary": "#ffb59d",
+                    "surface-container": "#181f31",
+                    "error-container": "#93000a",
+                    "on-primary-container": "#5f1900",
+                    "on-tertiary": "#003543",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#59d5fb",
+                    "on-surface": "#dce2fa",
+                    "on-secondary-fixed": "#390c00",
+                    "inverse-surface": "#dce2fa",
+                    "on-primary-fixed-variant": "#832600",
+                    "tertiary-container": "#00a7cb",
+                    "surface-container-low": "#141b2c",
+                    "on-secondary": "#581d07",
+                    "on-background": "#dce2fa",
+                    "secondary-fixed-dim": "#ffb59d",
+                    "primary-fixed-dim": "#ffb59d",
+                    "on-tertiary-fixed": "#001f28",
+                    "on-secondary-fixed-variant": "#76331b",
+                    "surface": "#0c1324",
+                    "on-primary-fixed": "#390c00",
+                    "on-surface-variant": "#e1bfb5",
+                    "secondary": "#ffb59d",
+                    "inverse-primary": "#ab3500",
+                    "outline": "#a98a80",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "primary-fixed": "#ffdbd0",
+                    "secondary-container": "#76331b",
+                    "surface-bright": "#32394c",
+                    "secondary-fixed": "#ffdbd0",
+                    "surface-container-high": "#232a3c",
+                    "on-primary": "#5d1900",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#293042",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#003744",
+                    "on-secondary-container": "#fb9d7d",
+                    "surface-container-highest": "#2e3447",
+                    "tertiary-fixed": "#b5ebff",
+                    "surface-variant": "#2e3447"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30">
+<!-- TopNavBar -->
+<header class="fixed top-0 z-50 flex justify-between items-center w-full px-6 h-16 bg-[#0c1324] border-b border-[#594139]/10">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-bold text-[#dce2fa] tracking-tighter">deprem-takip</div>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-[#dce2fa]/60 font-medium hover:text-[#dce2fa] font-['Space_Grotesk'] tracking-tight text-sm uppercase transition-colors duration-200" href="#">SON GÜNCELLEME: 12:45</a>
+<a class="text-[#dce2fa]/60 font-medium hover:text-[#dce2fa] font-['Space_Grotesk'] tracking-tight text-sm uppercase transition-colors duration-200" href="#">KANDİLLİ</a>
+<a class="text-[#dce2fa]/60 font-medium hover:text-[#dce2fa] font-['Space_Grotesk'] tracking-tight text-sm uppercase transition-colors duration-200" href="#">USGS</a>
+<a class="text-[#dce2fa]/60 font-medium hover:text-[#dce2fa] font-['Space_Grotesk'] tracking-tight text-sm uppercase transition-colors duration-200" href="#">TÜMÜ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#181f31] transition-colors duration-200 rounded-lg">
+<span class="material-symbols-outlined text-[#FF6B35]">notifications</span>
+</button>
+<button class="p-2 hover:bg-[#181f31] transition-colors duration-200 rounded-lg">
+<span class="material-symbols-outlined text-[#FF6B35]">settings</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 py-8 bg-[#141b2c] border-r border-[#594139]/10 z-40 pt-24">
+<div class="px-6 mb-8">
+<div class="text-lg font-black text-[#FF6B35] font-['Space_Grotesk'] uppercase">SEISMIC INTEL</div>
+<div class="text-[10px] text-on-surface-variant tracking-widest uppercase mt-1">Global Monitoring</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-[#dce2fa]/50 py-4 px-6 hover:text-[#dce2fa] hover:bg-[#181f31] transition-all duration-300 font-['Space_Grotesk'] text-sm font-semibold uppercase" href="#">
+<span class="material-symbols-outlined">map</span> Harita
+            </a>
+<a class="flex items-center gap-3 text-[#dce2fa]/50 py-4 px-6 hover:text-[#dce2fa] hover:bg-[#181f31] transition-all duration-300 font-['Space_Grotesk'] text-sm font-semibold uppercase" href="#">
+<span class="material-symbols-outlined">list_alt</span> Liste
+            </a>
+<a class="flex items-center gap-3 text-[#dce2fa]/50 py-4 px-6 hover:text-[#dce2fa] hover:bg-[#181f31] transition-all duration-300 font-['Space_Grotesk'] text-sm font-semibold uppercase" href="#">
+<span class="material-symbols-outlined">insights</span> Analiz
+            </a>
+<a class="flex items-center gap-3 text-[#dce2fa]/50 py-4 px-6 hover:text-[#dce2fa] hover:bg-[#181f31] transition-all duration-300 font-['Space_Grotesk'] text-sm font-semibold uppercase" href="#">
+<span class="material-symbols-outlined">description</span> Raporlar
+            </a>
+</nav>
+<div class="mt-auto space-y-1 border-t border-[#594139]/10 pt-4">
+<a class="flex items-center gap-3 text-[#dce2fa]/50 py-4 px-6 hover:text-[#dce2fa] hover:bg-[#181f31] transition-all duration-300 font-['Space_Grotesk'] text-sm font-semibold uppercase" href="#">
+<span class="material-symbols-outlined">help</span> Destek
+            </a>
+<a class="flex items-center gap-3 bg-gradient-to-r from-[#ffb59d]/10 to-transparent text-[#FF6B35] border-l-4 border-[#FF6B35] py-4 px-6 transition-all duration-300 font-['Space_Grotesk'] text-sm font-semibold uppercase" href="#">
+<span class="material-symbols-outlined">info</span> Hakkında
+            </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 pt-24 pb-12 px-8 min-h-screen">
+<div class="max-w-6xl mx-auto space-y-12">
+<!-- Header Section (Asymmetric Layout) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+<div class="md:col-span-8">
+<span class="text-primary font-headline text-sm tracking-[0.3em] uppercase mb-4 block">HAKKINDA</span>
+<h1 class="text-6xl md:text-8xl font-black text-on-surface tracking-tighter leading-none mb-6">Seismic<br/><span class="text-primary-container">Intel.</span></h1>
+<p class="text-on-surface-variant text-lg max-w-2xl font-light leading-relaxed">
+                        Dünyanın nabzını tutan, gerçek zamanlı sismik veri analiz ve takip platformu. Bilimsel hassasiyetle tasarlanmış, teknoloji ile güçlendirilmiş bir erken farkındalık sistemi.
+                    </p>
+</div>
+<div class="md:col-span-4 flex flex-col items-start md:items-end gap-2">
+<div class="text-on-surface-variant font-headline text-xs uppercase tracking-widest">Version v2.4.0-Alpha</div>
+<div class="text-on-surface-variant font-headline text-xs uppercase tracking-widest text-right">Build: 2023.11.08</div>
+</div>
+</section>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Mission Card -->
+<div class="md:col-span-2 bg-surface-container-low p-10 rounded-xl flex flex-col justify-between border border-[#594139]/10">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">target</span>
+<h2 class="text-2xl font-headline font-bold uppercase tracking-tight">MİSYONUMUZ</h2>
+</div>
+<p class="text-on-surface-variant leading-loose text-lg">
+                            Amacımız, sismik hareketliliği sadece bir veri yığını olmaktan çıkarıp, anlamlı ve erişilebilir bir bilgi kaynağına dönüştürmektir. Toplumsal farkındalığı artırmak ve bilimsel verileri modern görselleştirme teknikleriyle sunarak deprem hazırlığı sürecine teknolojik bir katkı sağlamayı hedefliyoruz.
+                        </p>
+</div>
+<div class="mt-12 flex gap-12">
+<div>
+<div class="text-4xl font-headline font-bold text-tertiary">99.9%</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant opacity-60">Uptime Verimliliği</div>
+</div>
+<div>
+<div class="text-4xl font-headline font-bold text-secondary">~2sn</div>
+<div class="text-xs uppercase tracking-widest text-on-surface-variant opacity-60">Veri Gecikmesi</div>
+</div>
+</div>
+</div>
+<!-- Technical Infrastructure -->
+<div class="bg-surface-container p-8 rounded-xl border border-[#594139]/10">
+<h2 class="text-xl font-headline font-bold uppercase tracking-tight mb-8">TEKNİK ALTYAPI</h2>
+<ul class="space-y-6">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary-container">database</span>
+<div>
+<span class="block text-sm font-bold text-on-surface">Cloud Scale Architecture</span>
+<span class="text-xs text-on-surface-variant font-light leading-snug">Distributed NoSQL databases with high throughput.</span>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary-container">terminal</span>
+<div>
+<span class="block text-sm font-bold text-on-surface">Websocket Streaming</span>
+<span class="text-xs text-on-surface-variant font-light leading-snug">Instant state updates across all connected clients.</span>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-primary-container">security</span>
+<div>
+<span class="block text-sm font-bold text-on-surface">Encrypted Data Feed</span>
+<span class="text-xs text-on-surface-variant font-light leading-snug">End-to-end security for institutional data relay.</span>
+</div>
+</li>
+</ul>
+</div>
+<!-- Data Sources Section -->
+<div class="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+<div class="bg-surface-container-highest p-8 rounded-xl border border-[#594139]/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+<div class="relative z-10">
+<div class="text-primary font-headline text-[10px] tracking-[0.2em] mb-2">INTEGRATION A</div>
+<h3 class="text-2xl font-headline font-bold mb-4">KANDİLLİ RASATHANESİ RSS</h3>
+<p class="text-sm text-on-surface-variant font-light leading-relaxed mb-6">
+                                Boğaziçi Üniversitesi Kandilli Rasathanesi ve Deprem Araştırma Enstitüsü (KRDAE) tarafından sağlanan anlık deprem verileri, XML/RSS formatında çekilerek yerel koordinat sistemine uygun olarak işlenmektedir.
+                            </p>
+<div class="flex items-center gap-2 text-xs font-mono text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                                LIVE FEED ACTIVE
+                            </div>
+</div>
+</div>
+<div class="bg-surface-container-highest p-8 rounded-xl border border-[#594139]/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+<div class="relative z-10">
+<div class="text-secondary font-headline text-[10px] tracking-[0.2em] mb-2">INTEGRATION B</div>
+<h3 class="text-2xl font-headline font-bold mb-4">USGS API SERVICE</h3>
+<h2 class="hidden">VERİ KAYNAKLARI</h2> <!-- For SEO and structure -->
+<p class="text-sm text-on-surface-variant font-light leading-relaxed mb-6">
+                                United States Geological Survey (USGS) Earthquake Hazards Program API'sı üzerinden global sismik hareketler 4.0 ve üzeri şiddetlerde anlık olarak takip edilmektedir.
+                            </p>
+<div class="flex items-center gap-2 text-xs font-mono text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                                API HANDSHAKE ESTABLISHED
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Contact Section -->
+<section class="bg-surface-container-low p-12 rounded-xl grid grid-cols-1 md:grid-cols-2 gap-12 border border-[#594139]/10">
+<div>
+<h2 class="text-4xl font-headline font-bold mb-6 tracking-tight">Bize Ulaşın</h2>
+<p class="text-on-surface-variant mb-8 font-light">
+                        Projemiz hakkında sorularınız, önerileriniz veya teknik destek talepleriniz için ekibimizle iletişime geçebilirsiniz.
+                    </p>
+<div class="space-y-4">
+<div class="flex items-center gap-4 group">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-sm">mail</span>
+</div>
+<span class="text-on-surface font-medium">iletisim@seismic-intel.com</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-sm">public</span>
+</div>
+<span class="text-on-surface font-medium">www.seismic-intel.com</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<input class="bg-surface border-none border-b border-outline-variant/40 focus:ring-0 focus:border-primary text-on-surface text-sm rounded-lg py-4" placeholder="Adınız" type="text"/>
+<input class="bg-surface border-none border-b border-outline-variant/40 focus:ring-0 focus:border-primary text-on-surface text-sm rounded-lg py-4" placeholder="E-posta" type="email"/>
+</div>
+<textarea class="w-full bg-surface border-none border-b border-outline-variant/40 focus:ring-0 focus:border-primary text-on-surface text-sm rounded-lg py-4" placeholder="Mesajınız" rows="4"></textarea>
+<button class="w-full bg-primary-container text-on-primary-container font-headline font-bold py-4 rounded-lg hover:scale-[1.02] active:scale-95 transition-all uppercase tracking-widest">GÖNDER</button>
+</div>
+</section>
+<!-- Footer Text Decoration -->
+<footer class="pt-8 flex justify-between items-center opacity-30 text-[10px] font-mono uppercase tracking-[0.4em]">
+<div>© 2024 SEISMIC INTEL PROJECT</div>
+<div class="flex gap-4">
+<span>LITHOSPHERE_MONITORING_PROTOCOL</span>
+<span class="text-primary font-bold">READY</span>
+</div>
+</footer>
+</div>
+</main>
+<!-- Background Decorative Element (Lithospheric Glow) -->
+<div class="fixed top-0 right-0 w-1/2 h-screen -z-10 pointer-events-none overflow-hidden">
+<div class="absolute top-[10%] right-[-10%] w-[600px] h-[600px] bg-[#FF6B35]/5 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] bg-[#59d5fb]/5 blur-[120px] rounded-full"></div>
+</div>
+</body></html>

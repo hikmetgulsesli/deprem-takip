@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deprem Takip - Filtreleme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#adc6ff",
+                        "secondary-fixed": "#ffdbca",
+                        "background": "#0c1324",
+                        "on-primary-container": "#00285d",
+                        "surface-bright": "#33394c",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "inverse-on-surface": "#2a3043",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container": "#191f31",
+                        "surface": "#0c1324",
+                        "primary": "#adc6ff",
+                        "surface-container-highest": "#2e3447",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-surface": "#dce1fb",
+                        "on-background": "#dce1fb",
+                        "surface-container-lowest": "#070d1f",
+                        "secondary-container": "#ec6a06",
+                        "on-secondary-fixed": "#341100",
+                        "surface-dim": "#0c1324",
+                        "secondary-fixed-dim": "#ffb690",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-tertiary-container": "#5c0008",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "secondary": "#ffb690",
+                        "primary-container": "#4d8eff",
+                        "on-primary-fixed-variant": "#004395",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#4a1c00",
+                        "tertiary-container": "#ff5451",
+                        "outline": "#8c909f",
+                        "on-secondary": "#552100",
+                        "on-primary": "#002e6a",
+                        "surface-variant": "#2e3447",
+                        "surface-container-high": "#23293c",
+                        "surface-container-low": "#151b2d",
+                        "on-tertiary-fixed-variant": "#930013",
+                        "on-tertiary-fixed": "#410004",
+                        "on-tertiary": "#68000a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-primary": "#005ac2",
+                        "outline-variant": "#424754",
+                        "tertiary": "#ffb3ad",
+                        "on-secondary-fixed-variant": "#783200"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .magnitude { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center justify-end overflow-hidden">
+<!-- Background Content Mockup (The Observatory Landscape) -->
+<div class="fixed inset-0 z-0 opacity-40 pointer-events-none">
+<div class="absolute inset-0 bg-gradient-to-b from-surface via-surface-container-lowest to-surface-container-low"></div>
+<div class="p-8 space-y-8">
+<div class="flex justify-between items-center">
+<div class="h-8 w-48 bg-surface-container-high rounded-full"></div>
+<div class="flex gap-4">
+<div class="h-10 w-10 bg-surface-container-high rounded-full"></div>
+<div class="h-10 w-10 bg-surface-container-high rounded-full"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-48 bg-surface-container-low rounded-xl"></div>
+<div class="h-48 bg-surface-container-low rounded-xl"></div>
+<div class="h-96 col-span-2 bg-surface-container-low rounded-xl"></div>
+</div>
+</div>
+</div>
+<!-- Scrim / Overlay -->
+<div class="fixed inset-0 bg-background/80 backdrop-blur-md z-40"></div>
+<!-- Bottom Sheet Mobile Filter Panel -->
+<div class="relative w-full max-w-md bg-surface-container-low rounded-t-full z-50 flex flex-col max-h-[813px] shadow-2xl">
+<!-- Drag Handle Indicator -->
+<div class="flex justify-center py-4">
+<div class="w-12 h-1.5 bg-outline-variant/30 rounded-full"></div>
+</div>
+<!-- Header -->
+<div class="px-6 pb-6 flex justify-between items-center">
+<div>
+<h2 class="text-2xl font-bold tracking-tight text-on-surface uppercase">FİLTRELE</h2>
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant/70 mt-1">Sismik Parametreleri Düzenle</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto px-6 space-y-10 pb-32">
+<!-- Magnitude Range Section -->
+<div class="space-y-6">
+<div class="flex justify-between items-end">
+<label class="text-xs font-label uppercase tracking-widest text-primary font-semibold">BÜYÜKLÜK (MAG)</label>
+<span class="magnitude text-3xl font-bold text-primary">3.5 - 7.5</span>
+</div>
+<div class="relative h-12 flex items-center">
+<div class="absolute w-full h-1.5 bg-surface-container-high rounded-full"></div>
+<div class="absolute left-[30%] right-[20%] h-1.5 bg-primary rounded-full"></div>
+<!-- Custom Slider Thumbs (Visual Only) -->
+<div class="absolute left-[30%] -translate-x-1/2 w-6 h-6 bg-primary rounded-full border-4 border-surface shadow-lg"></div>
+<div class="absolute right-[20%] translate-x-1/2 w-6 h-6 bg-primary rounded-full border-4 border-surface shadow-lg"></div>
+</div>
+<div class="flex justify-between text-[10px] font-label text-outline uppercase tracking-tighter">
+<span>0.0</span>
+<span>2.5</span>
+<span>5.0</span>
+<span>7.5</span>
+<span>10.0</span>
+</div>
+</div>
+<!-- Date Range Section -->
+<div class="space-y-4">
+<label class="text-xs font-label uppercase tracking-widest text-on-surface-variant font-semibold">ZAMAN ARALIĞI</label>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-container p-4 rounded-xl flex flex-col gap-1 transition-colors hover:bg-surface-container-high cursor-pointer">
+<span class="text-[10px] font-label text-outline uppercase">Başlangıç</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">calendar_today</span>
+<span class="text-sm font-medium">12.05.2024</span>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-xl flex flex-col gap-1 transition-colors hover:bg-surface-container-high cursor-pointer border-2 border-primary/20">
+<span class="text-[10px] font-label text-outline uppercase">Bitiş</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">calendar_today</span>
+<span class="text-sm font-medium">Şu An</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Source Toggle Section (USGS vs Kandilli) -->
+<div class="space-y-4">
+<label class="text-xs font-label uppercase tracking-widest text-on-surface-variant font-semibold">VERİ KAYNAĞI</label>
+<div class="flex p-1.5 bg-surface-container-highest rounded-full w-full">
+<button class="flex-1 py-3 px-4 rounded-full bg-primary text-on-primary font-bold text-xs flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-base">public</span>
+                        TÜMÜ
+                    </button>
+<button class="flex-1 py-3 px-4 rounded-full text-on-surface-variant font-medium text-xs flex items-center justify-center gap-2 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined text-base">language</span>
+                        USGS
+                    </button>
+<button class="flex-1 py-3 px-4 rounded-full text-on-surface-variant font-medium text-xs flex items-center justify-center gap-2 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined text-base">location_on</span>
+                        KANDİLLİ
+                    </button>
+</div>
+</div>
+<!-- Depth and Region Options -->
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-3">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">DERİNLİK MAX</label>
+<div class="flex items-center justify-between bg-surface-container p-4 rounded-xl">
+<span class="text-sm font-bold">50 KM</span>
+<span class="material-symbols-outlined text-outline">unfold_more</span>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant">BÖLGE SEÇİMİ</label>
+<div class="flex items-center justify-between bg-surface-container p-4 rounded-xl">
+<span class="text-sm font-bold">Türkiye</span>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Advanced Alerts Toggle -->
+<div class="flex items-center justify-between bg-surface-container-high/40 p-5 rounded-2xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">notifications_active</span>
+</div>
+<div>
+<p class="text-sm font-bold">Acil Durum Bildirimleri</p>
+<p class="text-[10px] text-on-surface-variant/60 uppercase tracking-tighter">6.0+ Mag depremler için</p>
+</div>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative p-1 transition-colors">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Action -->
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-surface-container-low via-surface-container-low to-transparent pt-10">
+<button class="w-full bg-primary py-5 rounded-full text-on-primary font-bold tracking-widest text-sm shadow-xl active:scale-95 transition-transform uppercase">
+                Sonuçları Göster
+            </button>
+</div>
+</div>
+<!-- Navigation Shell Placeholder (Bottom Bar as per JSON Logic) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-[#151b2d] flex justify-around items-center py-4 z-[60] border-t border-white/5 opacity-40 blur-[1px]">
+<div class="flex flex-col items-center gap-1 opacity-50">
+<span class="material-symbols-outlined">map</span>
+<span class="text-[10px] font-label uppercase">Harita</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-[#adc6ff] font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list</span>
+<span class="text-[10px] font-label uppercase">Liste</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-50">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="text-[10px] font-label uppercase">Analiz</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-50">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-label uppercase">Raporlar</span>
+</div>
+</nav>
+</body></html>
