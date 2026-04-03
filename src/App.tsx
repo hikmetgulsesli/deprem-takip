@@ -174,7 +174,7 @@ function App() {
                 className="px-4 py-2 bg-surface-container rounded-lg text-on-surface border border-outline-variant/20 focus:border-primary focus:outline-none"
               >
                 <option value="">Tüm Kaynaklar</option>
-                <option value="KANDILLI">Kandilli</option>
+                <option value="kandilli">Kandilli</option>
                 <option value="USGS">USGS</option>
                 <option value="AFAD">AFAD</option>
               </select>
