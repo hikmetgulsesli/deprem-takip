@@ -1,15 +1,79 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-nav {
+  background: rgba(21, 27, 45, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(46, 52, 71, 0.5);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #dce1fb;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(220, 225, 251, 0.6);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #dce1fb;
+}
+
+.nav-link.active {
+  color: #adc6ff;
+  border-bottom-color: #adc6ff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem 0;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
 }
 
 .title {
+  font-family: 'Space Grotesk', sans-serif;
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 2rem;
-  text-shadow: 0 0 30px rgba(100, 200, 255, 0.5);
+  color: #dce1fb;
+  letter-spacing: -0.02em;
 }
 
 .earthquake-list {
@@ -18,25 +82,26 @@
 }
 
 .earthquake-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(25, 31, 49, 0.8);
   backdrop-filter: blur(10px);
-  border-radius: 16px;
+  border-radius: 0.75rem;
   padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(46, 52, 71, 0.5);
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .earthquake-card:hover {
-  transform: translateY(-2px);
+  background: rgba(35, 41, 60, 0.8);
 }
 
 .magnitude {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
-  color: #4ecdc4;
+  color: #adc6ff;
   min-width: 80px;
   text-align: center;
 }
@@ -46,19 +111,52 @@
 }
 
 .location {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: #dce1fb;
 }
 
 .meta {
-  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Inter', sans-serif;
+  color: rgba(220, 225, 251, 0.6);
   font-size: 0.875rem;
 }
 
+.loading,
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  font-size: 1.25rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.error {
+  color: #ffb4ab;
+}
+
 @media (max-width: 768px) {
-  .container {
+  .main-nav {
     padding: 1rem;
+  }
+  
+  .nav-logo {
+    font-size: 1rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    font-size: 0.8125rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
   }
   
   .title {
@@ -68,5 +166,9 @@
   .earthquake-card {
     flex-direction: column;
     text-align: center;
+  }
+  
+  .magnitude {
+    font-size: 2rem;
   }
 }
