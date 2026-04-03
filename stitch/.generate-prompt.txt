@@ -1,0 +1,145 @@
+# deprem-takip — Ürün Gereksinim Dokümanı
+
+## 1. Genel Bakış
+- **Proje Adı:** deprem-takip
+- **Platform:** Web (SPA)
+- **Tipoloji:** Canlı veri dashboard uygulaması
+- **Özet:** Türkiye ve dünya genelindeki son depremleri interaktif harita üzerinde gösteren uygulama. Kandilli Rasathanesi RSS ve USGS API kaynaklarından veri çeker. Kullanıcılar depremleri büyüklük ve zaman aralığına göre filtreleyebilir.
+- **Hedef Kullanıcı:** Deprem bilgilerini takip etmek isteyen Türk kullanıcılar
+
+## 2. Hedef Platform
+- **Platform:** Web (mobil uyumlu responsive tasarım)
+- **Tarayıcı Desteği:** Chrome, Firefox, Safari, Edge (son 2 versiyon)
+- **Hedef Cihaz:** Masaüstü, tablet, mobil
+
+## 3. Fonksiyonel Gereksinimler
+
+### 3.1 Veri Kaynakları
+| Kaynak | Açıklama | Endpoint/Format |
+|--------|----------|-----------------|
+| Kandilli Rasathanesi | Türkiye depremleri | RSS XML feed |
+| USGS | Dünya depremleri | GeoJSON API |
+
+### 3.2 Temel Özellikler
+| # | Özellik | Açıklama |
+|---|---------|----------|
+| 1 | Harita Görünümü | Leaflet tabanlı interaktif harita, deprem noktaları |
+| 2 | Deprem İşaretçileri | Harita üzerinde deprem konumları, büyüklüğe göre boyut |
+| 3 | Büyüklük Filtresi | Minimum büyüklük filtresi (slider, 1-7+) |
+| 4 | Zaman Filtresi | Son 24 saat / 7 gün / 30 gün seçenekleri |
+| 5 | Deprem Listesi | Tablo görünümünde deprem listesi |
+| 6 | Deprem Detayı | İşaretçi tıklandığında detay paneli |
+| 7 | Veri Kaynağı Seçimi | Kandilli / USGS / Her ikisi toggle |
+| 8 | Otomatik Yenileme | Verilerin periyodik olarak güncellenmesi |
+| 9 | İstatistikler | Toplam deprem sayısı, ortalama büyüklük |
+
+### 3.3 Kullanıcı Etkileşimleri
+- **Harita tıklama:** Deprem işaretçisine tıklayınca detay paneli açılır
+- **Filtre değişikliği:** Harita ve liste anında güncellenir
+- **Zoom/Pan:** Harita navigasyonu
+- **Tarih seçimi:** Özel tarih aralığı seçimi
+
+## 4. Teknik Gereksinimler
+| Katman | Teknoloji |
+|--------|-----------|
+| Framework | React 18 + Vite |
+| Styling | Tailwind CSS |
+| Map | Leaflet + React-Leaflet |
+| HTTP | Fetch API / axios |
+| State | React useState + useEffect |
+| Build Araçları | Vite |
+| Tip Kontrolü | TypeScript |
+| Test | Vitest |
+
+## 5. API Entegrasyonları
+
+### 5.1 Kandilli Rasathanesi RSS
+- **URL:** Kandilli web sayfası üzerinden RSS/XML
+- **Parser:** XML/JSON dönüşümü
+- **Veri:** Tarih, saat, enlem, boylam, büyüklük, derinlik, yer
+
+### 5.2 USGS Earthquake API
+- **URL:** https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/{magnitude}_{period}.geojson
+- **Period:** significant_hourly, significant_daily, 4.5_hourly, 4.5_daily, 2.5_hourly, 2.5_daily, 1.0_hourly, 1.0_daily
+- **Veri:** GeoJSON formatında özellikler
+
+## 6. UI/UX Gereksinimleri
+- **Tema:** Koyu tema (dark mode)
+- **Tasarım Dili:** Modern dashboard, data-driven
+- **Renk Paleti:**
+  - Arka plan: slate-950
+  - Kart/Surface: slate-800
+  - Birincil: blue-500 (USGS), orange-500 (Kandilli)
+  - Metin: beyaz
+- **Tipografi:** Space Grotesk (başlık), Inter (gövde)
+- **Layout:** Sol panelde filtreler, ortada harita, sağda isteğe bağlı liste
+- **Responsive:** Mobilde filtreler dropdown, harita tam ekran
+
+## 7. Hata Yönetimi
+- **API Hatası:** Kullanıcıya Türkçe hata mesajı, yedek veri kaynağı önerisi
+- **Ağ Hatası:** Bağlantı yeniden deneme butonu
+- **Boş Veri:** "Bu filtre ile deprem bulunamadı" mesajı
+
+## 8. Performans Hedefleri
+- İlk yükleme: < 3sn
+- Harita render: < 1sn
+- Filtre güncelleme: < 500ms
+- API yanıt timeout: 10sn
+
+## 9. Dosya Yapısı
+```
+src/
+  components/
+    Map/
+      EarthquakeMap.tsx
+      EarthquakeMarker.tsx
+    Sidebar/
+      FilterPanel.tsx
+      EarthquakeList.tsx
+    Detail/
+      EarthquakeDetail.tsx
+    Stats/
+      StatisticsBar.tsx
+    Error/
+      ErrorBanner.tsx
+    Loading/
+      LoadingSpinner.tsx
+  hooks/
+    useEarthquakes.ts
+    useFilters.ts
+  services/
+    kandilli.ts
+    usgs.ts
+  types/
+    earthquake.ts
+  utils/
+    formatters.ts
+  App.tsx
+  main.tsx
+  index.css
+```
+
+## 10. Ekranlar (Screens)
+| # | Ekran Adı | Tür | Açıklama |
+|---|-----------|-----|----------|
+| 1 | Ana Harita Görünümü | dashboard | Leaflet haritası üzerinde deprem işaretçileri, filtre paneli |
+| 2 | Deprem Listesi | list-view | Tablo halinde deprem listesi, sıralanabilir sütunlar |
+| 3 | Deprem Detayı | detail-view | İşaretçi tıklandığında açılan detay paneli |
+| 4 | Filtreler | utility-view | Büyüklük slider, zaman aralığı, veri kaynağı seçimi |
+| 5 | İstatistikler | dashboard | Toplam deprem, ortalama büyüklük, en güçlü deprem |
+| 6 | Hata Durumu | error-state | API hatalarında gösterilen hata bannerı |
+| 7 | Yükleniyor Durumu | loading-state | Veri yüklenirken spinner gösterimi |
+| 8 | Boş Durum | empty-state | Filtre sonucu deprem bulunamadığında gösterilir |
+| 9 | Hakkında | info-view | Uygulama bilgileri, veri kaynakları açıklaması |
+| 10 | Mobil Harita Görünümü | utility-view | Mobilde tam ekran harita, bottom sheet filtreler |
+
+Generate a SEPARATE screen design for EVERY page, view, modal, dialog, tab panel, and settings screen described in this PRD. Do NOT skip ANY screen — even if it seems minor.
+
+MANDATORY SCREENS:
+- If the PRD mentions "settings" or "ayarlar" → generate a Settings screen
+- If the PRD mentions tabs or bottom navigation → generate EACH tab view as a separate screen
+- If the PRD mentions modals (statistics, help, share, confirmation) → generate each as a separate screen
+- If the PRD mentions error states, empty states, loading states → generate those too
+- Generate at least as many screens as there are distinct views/pages/modals in the PRD
+
+All visible text must be in Turkish. Use a dark, modern theme.
