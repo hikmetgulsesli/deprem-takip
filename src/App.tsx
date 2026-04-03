@@ -1,19 +1,68 @@
 import { useState } from 'react';
-import { Map, List, BarChart3, FileText, Bell, Settings, RefreshCw } from 'lucide-react';
+import { Map, List, BarChart3, FileText, Bell, Settings } from 'lucide-react';
 import { EarthquakeList } from './components/EarthquakeList';
-import { ErrorBanner } from './components/ErrorBanner';
-import { LoadingSpinner } from './components/LoadingSpinner';
-import { useEarthquakes } from './hooks/useEarthquakes';
 import type { Earthquake } from './types';
 import './App.css';
 
+const mockEarthquakes: Earthquake[] = [
+  {
+    id: '1',
+    location: 'MARMARA DENİZİ (SİLİVRİ AÇIKLARI)',
+    magnitude: 5.8,
+    depth: 7.2,
+    timestamp: new Date().toISOString(),
+    latitude: 40.8523,
+    longitude: 28.1472,
+    source: 'KANDILLI'
+  },
+  {
+    id: '2',
+    location: 'EGE DENİZİ (KUŞADASI KÖRFEZİ)',
+    magnitude: 3.4,
+    depth: 15.0,
+    timestamp: new Date(Date.now() - 3600000).toISOString(),
+    latitude: 37.9150,
+    longitude: 27.1245,
+    source: 'USGS'
+  },
+  {
+    id: '3',
+    location: 'AKDENİZ (ANTALYA AÇIKLARI)',
+    magnitude: 4.2,
+    depth: 12.5,
+    timestamp: new Date(Date.now() - 7200000).toISOString(),
+    latitude: 36.8969,
+    longitude: 30.7133,
+    source: 'AFAD'
+  },
+  {
+    id: '4',
+    location: 'KARADENİZ (SAMSUN KUZEYİ)',
+    magnitude: 2.1,
+    depth: 8.0,
+    timestamp: new Date(Date.now() - 10800000).toISOString(),
+    latitude: 41.2867,
+    longitude: 36.3381,
+    source: 'KANDILLI'
+  },
+  {
+    id: '5',
+    location: 'DOĞU ANADOLU (VAN GÖLÜ)',
+    magnitude: 6.2,
+    depth: 5.5,
+    timestamp: new Date(Date.now() - 14400000).toISOString(),
+    latitude: 38.5010,
+    longitude: 43.3730,
+    source: 'USGS'
+  }
+];
+
 function App() {
+  const [earthquakes] = useState<Earthquake[]>(mockEarthquakes);
+  const [loading] = useState(false);
+  const [error] = useState('');
   const [activeTab, setActiveTab] = useState('liste');
   const [selectedEarthquake, setSelectedEarthquake] = useState<Earthquake | null>(null);
-  const [minMagnitude, setMinMagnitude] = useState<number | undefined>(undefined);
-  const [source, setSource] = useState<string | undefined>(undefined);
-
-  const { earthquakes, loading, error, hasMore, total, refetch, loadMore } = useEarthquakes(minMagnitude, source);
 
   const handleEarthquakeClick = (earthquake: Earthquake) => {
     setSelectedEarthquake(earthquake);
@@ -21,13 +70,17 @@ function App() {
     console.log('Selected earthquake:', earthquake);
   };
 
-  if (loading && earthquakes.length === 0) {
-    return (
-      <div className="min-h-screen bg-surface flex items-center justify-center">
-        <LoadingSpinner label="Deprem verileri yükleniyor..." />
-      </div>
-    );
-  }
+  if (loading) return (
+    <div className="min-h-screen bg-surface flex items-center justify-center">
+      <div className="text-on-surface font-body text-xl">Yükleniyor...</div>
+    </div>
+  );
+  
+  if (error) return (
+    <div className="min-h-screen bg-surface flex items-center justify-center">
+      <div className="text-error font-body text-xl">{error}</div>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-surface text-on-surface font-body flex">
@@ -94,13 +147,6 @@ function App() {
             <span className="text-primary font-bold border-b-2 border-primary font-headline py-1">Son Depremler</span>
           </div>
           <div className="flex items-center gap-4">
-            <button 
-              onClick={() => refetch()}
-              disabled={loading}
-              className="p-2 text-primary hover:bg-surface-variant rounded-full transition-colors disabled:opacity-50"
-            >
-              <RefreshCw size={20} className={loading ? 'animate-spin' : ''} />
-            </button>
             <button className="p-2 text-primary hover:bg-surface-variant rounded-full transition-colors">
               <Bell size={20} />
             </button>
@@ -113,30 +159,19 @@ function App() {
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6 pb-24 md:pb-6">
           <div className="max-w-6xl mx-auto">
-            {/* Error Banner */}
-            {error && (
-              <div className="mb-6">
-                <ErrorBanner error={error} onRetry={refetch} type="api" />
-              </div>
-            )}
-
             {/* Stats Header */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               <div className="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10">
                 <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase">En Yüksek Mag</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-headline font-bold text-error">
-                    {earthquakes.length > 0 ? Math.max(...earthquakes.map(eq => eq.magnitude)).toFixed(1) : '-'}
-                  </span>
+                  <span className="text-3xl font-headline font-bold text-error">5.8</span>
                   <span className="text-xs text-on-surface-variant font-medium">Mv</span>
                 </div>
               </div>
               <div className="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10">
                 <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase">Ortalama Derinlik</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-headline font-bold text-tertiary">
-                    {earthquakes.length > 0 ? (earthquakes.reduce((acc, eq) => acc + eq.depth, 0) / earthquakes.length).toFixed(1) : '-'}
-                  </span>
+                  <span className="text-3xl font-headline font-bold text-tertiary">9.6</span>
                   <span className="text-xs text-on-surface-variant font-medium">km</span>
                 </div>
               </div>
@@ -150,34 +185,9 @@ function App() {
                 <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-primary-container to-transparent"></div>
                 <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase relative z-10">Aktif Depremler</p>
                 <div className="flex items-baseline gap-2 relative z-10">
-                  <span className="text-3xl font-headline font-bold text-on-surface">{total}</span>
+                  <span className="text-3xl font-headline font-bold text-on-surface">{earthquakes.length}</span>
                 </div>
               </div>
-            </div>
-
-            {/* Filter Controls */}
-            <div className="flex flex-wrap gap-4 mb-6">
-              <select
-                value={minMagnitude || ''}
-                onChange={(e) => setMinMagnitude(e.target.value ? parseFloat(e.target.value) : undefined)}
-                className="px-4 py-2 bg-surface-container rounded-lg text-on-surface border border-outline-variant/20 focus:border-primary focus:outline-none"
-              >
-                <option value="">Tüm Büyüklükler</option>
-                <option value="2">2.0+</option>
-                <option value="3">3.0+</option>
-                <option value="4">4.0+</option>
-                <option value="5">5.0+</option>
-              </select>
-              <select
-                value={source || ''}
-                onChange={(e) => setSource(e.target.value || undefined)}
-                className="px-4 py-2 bg-surface-container rounded-lg text-on-surface border border-outline-variant/20 focus:border-primary focus:outline-none"
-              >
-                <option value="">Tüm Kaynaklar</option>
-                <option value="kandilli">Kandilli</option>
-                <option value="USGS">USGS</option>
-                <option value="AFAD">AFAD</option>
-              </select>
             </div>
 
             {/* Earthquake List */}
@@ -185,33 +195,14 @@ function App() {
               <h2 className="text-2xl font-bold font-headline text-on-surface mb-2">DEPREM LİSTESİ</h2>
               <div className="flex items-center gap-4">
                 <span className="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded">CANLI VERİ</span>
-                <span className="text-xs font-medium text-on-surface-variant font-label uppercase tracking-widest">Son 24 Saat İçinde {total} Sismik Olay</span>
+                <span className="text-xs font-medium text-on-surface-variant font-label uppercase tracking-widest">Son 24 Saat İçinde {earthquakes.length} Sismik Olay</span>
               </div>
             </div>
 
-            {loading && earthquakes.length === 0 ? (
-              <LoadingSpinner label="Deprem verileri yükleniyor..." />
-            ) : (
-              <>
-                <EarthquakeList 
-                  earthquakes={earthquakes}
-                  onEarthquakeClick={handleEarthquakeClick}
-                />
-                
-                {/* Load More */}
-                {hasMore && (
-                  <div className="mt-6 text-center">
-                    <button
-                      onClick={loadMore}
-                      disabled={loading}
-                      className="px-6 py-3 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-lg font-medium transition-all disabled:opacity-50"
-                    >
-                      {loading ? 'Yükleniyor...' : 'Daha Fazla Yükle'}
-                    </button>
-                  </div>
-                )}
-              </>
-            )}
+            <EarthquakeList 
+              earthquakes={earthquakes}
+              onEarthquakeClick={handleEarthquakeClick}
+            />
 
             {/* Selected Earthquake Info */}
             {selectedEarthquake && (
