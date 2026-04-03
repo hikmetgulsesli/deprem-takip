@@ -1,28 +1,59 @@
 import { useState } from 'react';
 import { Map, List, BarChart3, FileText, Bell, Settings } from 'lucide-react';
+import { EarthquakeList } from './components/EarthquakeList';
+import type { Earthquake } from './types';
 import './App.css';
-
-interface Earthquake {
-  id: string;
-  location: string;
-  magnitude: number;
-  depth: number;
-  timestamp: string;
-  latitude: number;
-  longitude: number;
-  source: 'USGS' | 'KANDILLI' | 'AFAD';
-}
 
 const mockEarthquakes: Earthquake[] = [
   {
     id: '1',
-    location: 'İstanbul',
-    magnitude: 3.5,
-    depth: 10,
+    location: 'MARMARA DENİZİ (SİLİVRİ AÇIKLARI)',
+    magnitude: 5.8,
+    depth: 7.2,
     timestamp: new Date().toISOString(),
-    latitude: 41.0082,
-    longitude: 28.9784,
+    latitude: 40.8523,
+    longitude: 28.1472,
     source: 'KANDILLI'
+  },
+  {
+    id: '2',
+    location: 'EGE DENİZİ (KUŞADASI KÖRFEZİ)',
+    magnitude: 3.4,
+    depth: 15.0,
+    timestamp: new Date(Date.now() - 3600000).toISOString(),
+    latitude: 37.9150,
+    longitude: 27.1245,
+    source: 'USGS'
+  },
+  {
+    id: '3',
+    location: 'AKDENİZ (ANTALYA AÇIKLARI)',
+    magnitude: 4.2,
+    depth: 12.5,
+    timestamp: new Date(Date.now() - 7200000).toISOString(),
+    latitude: 36.8969,
+    longitude: 30.7133,
+    source: 'AFAD'
+  },
+  {
+    id: '4',
+    location: 'KARADENİZ (SAMSUN KUZEYİ)',
+    magnitude: 2.1,
+    depth: 8.0,
+    timestamp: new Date(Date.now() - 10800000).toISOString(),
+    latitude: 41.2867,
+    longitude: 36.3381,
+    source: 'KANDILLI'
+  },
+  {
+    id: '5',
+    location: 'DOĞU ANADOLU (VAN GÖLÜ)',
+    magnitude: 6.2,
+    depth: 5.5,
+    timestamp: new Date(Date.now() - 14400000).toISOString(),
+    latitude: 38.5010,
+    longitude: 43.3730,
+    source: 'USGS'
   }
 ];
 
@@ -31,6 +62,13 @@ function App() {
   const [loading] = useState(false);
   const [error] = useState('');
   const [activeTab, setActiveTab] = useState('liste');
+  const [selectedEarthquake, setSelectedEarthquake] = useState<Earthquake | null>(null);
+
+  const handleEarthquakeClick = (earthquake: Earthquake) => {
+    setSelectedEarthquake(earthquake);
+    // In a real app, this would center the map and open a modal
+    console.log('Selected earthquake:', earthquake);
+  };
 
   if (loading) return (
     <div className="min-h-screen bg-surface flex items-center justify-center">
@@ -120,34 +158,61 @@ function App() {
 
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6 pb-24 md:pb-6">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl font-black font-headline text-on-surface mb-8">Son Depremler</h1>
-            <div className="space-y-4">
-              {earthquakes.map(eq => (
-                <div key={eq.id} className="bg-surface-container p-6 rounded-2xl border border-outline-variant/15 hover:bg-surface-container-high transition-colors">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className={`w-16 h-16 rounded-full flex items-center justify-center font-headline font-black text-2xl ${
-                        eq.magnitude >= 5 ? 'bg-error-container text-error' :
-                        eq.magnitude >= 4 ? 'bg-secondary-container text-secondary' :
-                        'bg-primary-container text-on-primary'
-                      }`}>
-                        {eq.magnitude.toFixed(1)}
-                      </div>
-                      <div>
-                        <div className="text-xl font-bold font-headline text-on-surface">{eq.location}</div>
-                        <div className="text-sm text-on-surface-variant">Derinlik: {eq.depth} km</div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm text-on-surface-variant">
-                        {new Date(eq.timestamp).toLocaleString('tr-TR')}
-                      </div>
-                    </div>
-                  </div>
+          <div className="max-w-6xl mx-auto">
+            {/* Stats Header */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div className="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10">
+                <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase">En Yüksek Mag</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-headline font-bold text-error">5.8</span>
+                  <span className="text-xs text-on-surface-variant font-medium">Mv</span>
                 </div>
-              ))}
+              </div>
+              <div className="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10">
+                <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase">Ortalama Derinlik</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-headline font-bold text-tertiary">9.6</span>
+                  <span className="text-xs text-on-surface-variant font-medium">km</span>
+                </div>
+              </div>
+              <div className="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10">
+                <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase">Sismik Aktivite</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-headline font-bold text-primary">Normal</span>
+                </div>
+              </div>
+              <div className="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-primary-container to-transparent"></div>
+                <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase relative z-10">Aktif Depremler</p>
+                <div className="flex items-baseline gap-2 relative z-10">
+                  <span className="text-3xl font-headline font-bold text-on-surface">{earthquakes.length}</span>
+                </div>
+              </div>
             </div>
+
+            {/* Earthquake List */}
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold font-headline text-on-surface mb-2">DEPREM LİSTESİ</h2>
+              <div className="flex items-center gap-4">
+                <span className="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded">CANLI VERİ</span>
+                <span className="text-xs font-medium text-on-surface-variant font-label uppercase tracking-widest">Son 24 Saat İçinde {earthquakes.length} Sismik Olay</span>
+              </div>
+            </div>
+
+            <EarthquakeList 
+              earthquakes={earthquakes}
+              onEarthquakeClick={handleEarthquakeClick}
+            />
+
+            {/* Selected Earthquake Info */}
+            {selectedEarthquake && (
+              <div className="mt-6 p-4 bg-primary/10 rounded-xl border border-primary/30">
+                <p className="text-sm text-on-surface">
+                  Seçilen deprem: <span className="font-semibold">{selectedEarthquake.location}</span> - 
+                  Büyüklük: <span className="font-semibold">{selectedEarthquake.magnitude}</span>
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
