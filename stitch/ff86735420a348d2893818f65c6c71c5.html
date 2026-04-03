@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seismic Intel - Sistem Durumları</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0c1324",
+                        "surface-tint": "#ffb59d",
+                        "tertiary": "#59d5fb",
+                        "primary-container": "#ff6b35",
+                        "background": "#0c1324",
+                        "surface-container-lowest": "#070e1e",
+                        "outline-variant": "#594139",
+                        "primary": "#ffb59d",
+                        "surface-container": "#181f31",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#5f1900",
+                        "on-tertiary": "#003543",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#59d5fb",
+                        "on-surface": "#dce2fa",
+                        "on-secondary-fixed": "#390c00",
+                        "inverse-surface": "#dce2fa",
+                        "on-primary-fixed-variant": "#832600",
+                        "tertiary-container": "#00a7cb",
+                        "surface-container-low": "#141b2c",
+                        "on-secondary": "#581d07",
+                        "on-background": "#dce2fa",
+                        "secondary-fixed-dim": "#ffb59d",
+                        "primary-fixed-dim": "#ffb59d",
+                        "on-tertiary-fixed": "#001f28",
+                        "on-secondary-fixed-variant": "#76331b",
+                        "surface": "#0c1324",
+                        "on-primary-fixed": "#390c00",
+                        "on-surface-variant": "#e1bfb5",
+                        "secondary": "#ffb59d",
+                        "inverse-primary": "#ab3500",
+                        "outline": "#a98a80",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "primary-fixed": "#ffdbd0",
+                        "secondary-container": "#76331b",
+                        "surface-bright": "#32394c",
+                        "secondary-fixed": "#ffdbd0",
+                        "surface-container-high": "#232a3c",
+                        "on-primary": "#5d1900",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#293042",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#003744",
+                        "on-secondary-container": "#fb9d7d",
+                        "surface-container-highest": "#2e3447",
+                        "tertiary-fixed": "#b5ebff",
+                        "surface-variant": "#2e3447"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.bg-noise {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAtQgATz4qE_aYRhUU86FIwEWHfPaGm7PjRWZr2M6IgH6H4iP92GzJ7xXB9WmLjRIyKGC48tpeb4CDQCH1wMlbR26UX4Fekd1vC389rCV7PJ2POO5seV-tjYZu72XHi6V4UUQtrvW2OQjQ6oXKk9IfczwqG7UxPAnuxQ2lxrbRU-4nWw7VREG7W7BpsYU6q2N8kxQ-P9zROanYQIvtJVg04Sf00QE_TKiyLilGyrTHVJ_tq1DyNDKCEC9x01etrsQsj_gB4hWFYKYE);
+    opacity: 0.03
+    }</style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased selection:bg-primary/30">
+<!-- Sidebar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#141b2c] border-r border-[#594139]/10 flex flex-col h-full py-8 z-40 hidden md:flex">
+<div class="px-6 mb-12">
+<h1 class="text-lg font-black text-[#FF6B35] font-headline tracking-tighter">SEISMIC INTEL</h1>
+<p class="text-[10px] text-on-surface-variant/40 tracking-[0.2em] font-medium">GLOBAL MONITORING</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-[#dce2fa]/50 py-4 px-6 hover:text-[#dce2fa] transition-all duration-300 hover:bg-[#181f31] flex items-center gap-4 group" href="#">
+<span class="material-symbols-outlined text-xl">map</span>
+<span class="font-headline text-sm font-semibold uppercase tracking-wider">Harita</span>
+</a>
+<a class="text-[#dce2fa]/50 py-4 px-6 hover:text-[#dce2fa] transition-all duration-300 hover:bg-[#181f31] flex items-center gap-4 group" href="#">
+<span class="material-symbols-outlined text-xl">list_alt</span>
+<span class="font-headline text-sm font-semibold uppercase tracking-wider">Liste</span>
+</a>
+<a class="bg-gradient-to-r from-[#ffb59d]/10 to-transparent text-[#FF6B35] border-l-4 border-[#FF6B35] py-4 px-6 flex items-center gap-4 group" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="font-headline text-sm font-semibold uppercase tracking-wider">Analiz</span>
+</a>
+<a class="text-[#dce2fa]/50 py-4 px-6 hover:text-[#dce2fa] transition-all duration-300 hover:bg-[#181f31] flex items-center gap-4 group" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+<span class="font-headline text-sm font-semibold uppercase tracking-wider">Raporlar</span>
+</a>
+</nav>
+<div class="mt-auto px-6 space-y-4">
+<div class="flex items-center gap-3 p-3 bg-surface-container rounded-lg border border-outline-variant/10">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">
+                    JD
+                </div>
+<div>
+<p class="text-xs font-bold text-on-surface">John Doe</p>
+<p class="text-[10px] text-on-surface-variant">Admin Level 4</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-4 border-t border-outline-variant/10">
+<a class="flex items-center gap-2 text-[#dce2fa]/50 hover:text-on-surface transition-colors text-xs uppercase font-headline tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">help</span> Destek
+                </a>
+<a class="flex items-center gap-2 text-[#dce2fa]/50 hover:text-on-surface transition-colors text-xs uppercase font-headline tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">info</span> Hakkında
+                </a>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center w-full px-6 h-16 bg-[#0c1324] docked full-width top-0 z-50 fixed md:pl-72 border-b border-[#594139]/10">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold text-[#dce2fa] tracking-tighter font-headline">deprem-takip</span>
+<nav class="hidden lg:flex items-center gap-6">
+<span class="font-headline tracking-tight text-sm uppercase text-[#dce2fa]/60 font-medium">SON GÜNCELLEME: 12:45</span>
+<span class="font-headline tracking-tight text-sm uppercase text-[#dce2fa]/60 font-medium hover:text-[#dce2fa] cursor-pointer transition-colors">KANDİLLİ</span>
+<span class="font-headline tracking-tight text-sm uppercase text-[#dce2fa]/60 font-medium hover:text-[#dce2fa] cursor-pointer transition-colors">USGS</span>
+<span class="text-[#FF6B35] font-bold border-b-2 border-[#FF6B35] pb-1 font-headline tracking-tight text-sm uppercase">TÜMÜ</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#181f31] transition-colors duration-200 rounded-lg text-[#dce2fa]/60">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-[#181f31] transition-colors duration-200 rounded-lg text-[#dce2fa]/60">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 p-8 min-h-screen relative overflow-hidden">
+<div class="absolute inset-0 bg-noise pointer-events-none"></div>
+<header class="mb-12 relative z-10">
+<div class="flex items-baseline gap-4 mb-2">
+<h2 class="text-4xl font-headline font-bold text-on-surface uppercase tracking-tighter">SİSTEM DURUMU</h2>
+<div class="h-[2px] flex-1 bg-gradient-to-r from-outline-variant/30 to-transparent"></div>
+</div>
+<p class="text-on-surface-variant font-body text-sm tracking-wide max-w-2xl">
+                Operasyonel veri katmanları ve merkezi sinyal işleme birimi sağlık durumu denetimi.
+            </p>
+</header>
+<!-- States Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+<!-- Error State Component -->
+<section class="group relative flex flex-col items-center justify-center min-h-[400px] p-8 bg-surface-container-low rounded-xl border border-outline-variant/10 overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-error/20">
+<div class="w-1/3 h-full bg-error"></div>
+</div>
+<div class="mb-8 relative">
+<div class="w-24 h-24 rounded-full border-4 border-error/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'wght' 200;">signal_disconnected</span>
+</div>
+<div class="absolute -top-1 -right-1 w-6 h-6 bg-error rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-on-error text-xs" style="font-variation-settings: 'wght' 700;">priority_high</span>
+</div>
+</div>
+<h3 class="font-headline text-2xl font-bold text-error uppercase tracking-tight mb-3">Veri Akışı Kesildi</h3>
+<p class="text-center text-on-surface-variant text-sm font-body leading-relaxed max-w-[240px] mb-8">
+                    Merkezi sismik istasyon ile bağlantı zaman aşımına uğradı. Sinyal geri kazanımı denetleniyor.
+                </p>
+<button class="group/btn relative px-8 py-3 bg-error text-on-error font-headline font-bold uppercase text-xs tracking-[0.2em] rounded transition-transform active:scale-95">
+                    TEKRAR DENE
+                    <div class="absolute inset-0 border border-error translate-x-1 translate-y-1 group-hover/btn:translate-x-0 group-hover/btn:translate-y-0 transition-transform"></div>
+</button>
+<div class="mt-12 w-full">
+<div class="flex justify-between items-end mb-2">
+<span class="text-[10px] font-headline font-bold uppercase text-on-surface-variant/40">Packet Loss Rate</span>
+<span class="text-xs font-headline font-bold text-error">100%</span>
+</div>
+<div class="h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-error w-full"></div>
+</div>
+</div>
+</section>
+<!-- Loading State Component -->
+<section class="relative flex flex-col items-center justify-center min-h-[400px] p-8 bg-surface-container rounded-xl border border-outline-variant/10">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary/5 to-transparent opacity-50 pointer-events-none"></div>
+<!-- Modern Spinner -->
+<div class="relative w-32 h-32 mb-8">
+<div class="absolute inset-0 rounded-full border-t-2 border-r-2 border-transparent border-t-tertiary border-r-tertiary/30 animate-[spin_1s_linear_infinite]"></div>
+<div class="absolute inset-4 rounded-full border-b-2 border-l-2 border-transparent border-b-tertiary/60 border-l-tertiary/10 animate-[spin_1.5s_linear_infinite_reverse]"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl animate-pulse">radar</span>
+</div>
+</div>
+<h3 class="font-headline text-2xl font-bold text-tertiary uppercase tracking-tight mb-3">Sinyal Ayrıştırılıyor...</h3>
+<p class="text-center text-on-surface-variant text-sm font-body leading-relaxed max-w-[240px] mb-8">
+                    Gelen ham sismik veriler spektral analiz biriminde süzülüyor. Lütfen bekleyin.
+                </p>
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-bounce"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-bounce [animation-delay:0.2s]"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-bounce [animation-delay:0.4s]"></span>
+</div>
+<div class="mt-12 w-full grid grid-cols-3 gap-2">
+<div class="h-1 bg-tertiary/20 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-full animate-[pulse_2s_infinite]"></div>
+</div>
+<div class="h-1 bg-tertiary/20 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-3/4 animate-[pulse_2s_infinite_0.5s]"></div>
+</div>
+<div class="h-1 bg-tertiary/20 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-1/2 animate-[pulse_2s_infinite_1s]"></div>
+</div>
+</div>
+</section>
+<!-- Empty State Component -->
+<section class="group relative flex flex-col items-center justify-center min-h-[400px] p-8 bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="mb-8 opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+<div class="relative">
+<span class="material-symbols-outlined text-7xl text-on-surface-variant font-thin" style="font-variation-settings: 'wght' 100;">database_off</span>
+<div class="absolute bottom-0 right-0 w-12 h-[1px] bg-primary/40 rotate-45 transform origin-left"></div>
+</div>
+</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface-variant uppercase tracking-tight mb-3">Kayıt Bulunamadı</h3>
+<p class="text-center text-on-surface-variant/60 text-sm font-body leading-relaxed max-w-[240px] mb-8">
+                    Seçilen filtre kriterlerine uygun sismik aktivite tespit edilemedi. Filtreleri sıfırlamayı deneyin.
+                </p>
+<button class="px-6 py-2 border border-outline-variant/30 text-on-surface-variant font-headline text-[10px] uppercase tracking-[0.25em] hover:bg-surface-container-highest transition-colors">
+                    FİLTRELERİ TEMİZLE
+                </button>
+<div class="mt-12 flex items-center gap-6">
+<div class="text-center">
+<p class="text-[10px] uppercase font-headline font-bold text-on-surface-variant/30 mb-1">Magnitude</p>
+<p class="text-lg font-headline font-light text-on-surface-variant/50">--</p>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/20"></div>
+<div class="text-center">
+<p class="text-[10px] uppercase font-headline font-bold text-on-surface-variant/30 mb-1">Depth</p>
+<p class="text-lg font-headline font-light text-on-surface-variant/50">--</p>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/20"></div>
+<div class="text-center">
+<p class="text-[10px] uppercase font-headline font-bold text-on-surface-variant/30 mb-1">Location</p>
+<p class="text-lg font-headline font-light text-on-surface-variant/50">--</p>
+</div>
+</div>
+</section>
+</div>
+<!-- System Detail Section -->
+<section class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+<div class="p-8 bg-surface-container-highest/30 rounded-xl border-l-2 border-primary-container">
+<h4 class="font-headline text-xs font-black text-primary uppercase tracking-[0.3em] mb-4">SİSTEM LOGLARI</h4>
+<div class="space-y-3 font-mono text-[10px] text-on-surface-variant/60">
+<div class="flex gap-4">
+<span class="text-primary-container">[12:44:01]</span>
+<span>CHECKING_REDUNDANCY_SERVER_A... OK</span>
+</div>
+<div class="flex gap-4">
+<span class="text-primary-container">[12:44:22]</span>
+<span>ERR_DATA_STREAM_INTERRUPTED: TIMEOUT_RCV_092</span>
+</div>
+<div class="flex gap-4">
+<span class="text-primary-container">[12:45:00]</span>
+<span>ATTEMPTING_RECONNECTION_SEQUENCE...</span>
+</div>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden min-h-[160px]">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="abstract digital blue and orange glowing lines representing data transfer and seismic waveforms on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVTrgRqSrU-KUZtuLhk-7i9RABSbR1N-MbcDHlUzwL6MeF1XKQ9KfakRGqazW0v8TprYCRmdgtda3Pq1QEJArOAR2GgJ92zgJhZautfo80g_e8NOKlpBLWQAl4YqcmS4HCDckkpmLATnADCNZywnEqzZhwQgzHoaDrPubXII8Sj6cg1jEbC9myYjn_0F7bonroCsQHg4HP8cooTAjxjHQqpZpSHqHVdKpHSIGKo2lvgn6110QZYbg6xX8YDUmiuKy-I9ft6Tkm8uE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-surface-dim/40 to-transparent p-8 flex flex-col justify-end">
+<h4 class="font-headline text-lg font-bold text-on-surface uppercase tracking-tight">Kritik İzleme Birimi</h4>
+<p class="text-xs text-on-surface-variant">Sistem verimliliği: %94.2</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 bg-[#0c1324] flex justify-around items-center px-4 z-50">
+<button class="flex flex-col items-center gap-1 text-[#FF6B35]">
+<span class="material-symbols-outlined">map</span>
+<span class="text-[10px] font-headline uppercase font-bold">Harita</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#dce2fa]/50">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-[10px] font-headline uppercase font-bold">Liste</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#dce2fa]/50">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-[10px] font-headline uppercase font-bold">Analiz</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#dce2fa]/50">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-headline uppercase font-bold">Raporlar</span>
+</button>
+</nav>
+</body></html>
