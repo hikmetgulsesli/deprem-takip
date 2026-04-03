@@ -1,48 +1,33 @@
 import { useState } from 'react';
-import { Map, List, BarChart3, FileText, Bell, Settings } from 'lucide-react';
+import { Map, List, BarChart3, FileText, Bell, Settings, RefreshCw } from 'lucide-react';
+import { EarthquakeList } from './components/EarthquakeList';
+import { ErrorBanner } from './components/ErrorBanner';
+import { LoadingSpinner } from './components/LoadingSpinner';
+import { useEarthquakes } from './hooks/useEarthquakes';
+import type { Earthquake } from './types';
 import './App.css';
 
-interface Earthquake {
-  id: string;
-  location: string;
-  magnitude: number;
-  depth: number;
-  timestamp: string;
-  latitude: number;
-  longitude: number;
-  source: 'USGS' | 'KANDILLI' | 'AFAD';
-}
-
-const mockEarthquakes: Earthquake[] = [
-  {
-    id: '1',
-    location: 'İstanbul',
-    magnitude: 3.5,
-    depth: 10,
-    timestamp: new Date().toISOString(),
-    latitude: 41.0082,
-    longitude: 28.9784,
-    source: 'KANDILLI'
-  }
-];
-
 function App() {
-  const [earthquakes] = useState<Earthquake[]>(mockEarthquakes);
-  const [loading] = useState(false);
-  const [error] = useState('');
   const [activeTab, setActiveTab] = useState('liste');
+  const [selectedEarthquake, setSelectedEarthquake] = useState<Earthquake | null>(null);
+  const [minMagnitude, setMinMagnitude] = useState<number | undefined>(undefined);
+  const [source, setSource] = useState<string | undefined>(undefined);
 
-  if (loading) return (
-    <div className="min-h-screen bg-surface flex items-center justify-center">
-      <div className="text-on-surface font-body text-xl">Yükleniyor...</div>
-    </div>
-  );
-  
-  if (error) return (
-    <div className="min-h-screen bg-surface flex items-center justify-center">
-      <div className="text-error font-body text-xl">{error}</div>
-    </div>
-  );
+  const { earthquakes, loading, error, hasMore, total, refetch, loadMore } = useEarthquakes(minMagnitude, source);
+
+  const handleEarthquakeClick = (earthquake: Earthquake) => {
+    setSelectedEarthquake(earthquake);
+    // In a real app, this would center the map and open a modal
+    console.log('Selected earthquake:', earthquake);
+  };
+
+  if (loading && earthquakes.length === 0) {
+    return (
+      <div className="min-h-screen bg-surface flex items-center justify-center">
+        <LoadingSpinner label="Deprem verileri yükleniyor..." />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-surface text-on-surface font-body flex">
@@ -109,6 +94,13 @@ function App() {
             <span className="text-primary font-bold border-b-2 border-primary font-headline py-1">Son Depremler</span>
           </div>
           <div className="flex items-center gap-4">
+            <button 
+              onClick={() => refetch()}
+              disabled={loading}
+              className="p-2 text-primary hover:bg-surface-variant rounded-full transition-colors disabled:opacity-50"
+            >
+              <RefreshCw size={20} className={loading ? 'animate-spin' : ''} />
+            </button>
             <button className="p-2 text-primary hover:bg-surface-variant rounded-full transition-colors">
               <Bell size={20} />
             </button>
@@ -120,34 +112,116 @@ function App() {
 
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6 pb-24 md:pb-6">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl font-black font-headline text-on-surface mb-8">Son Depremler</h1>
-            <div className="space-y-4">
-              {earthquakes.map(eq => (
-                <div key={eq.id} className="bg-surface-container p-6 rounded-2xl border border-outline-variant/15 hover:bg-surface-container-high transition-colors">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className={`w-16 h-16 rounded-full flex items-center justify-center font-headline font-black text-2xl ${
-                        eq.magnitude >= 5 ? 'bg-error-container text-error' :
-                        eq.magnitude >= 4 ? 'bg-secondary-container text-secondary' :
-                        'bg-primary-container text-on-primary'
-                      }`}>
-                        {eq.magnitude.toFixed(1)}
-                      </div>
-                      <div>
-                        <div className="text-xl font-bold font-headline text-on-surface">{eq.location}</div>
-                        <div className="text-sm text-on-surface-variant">Derinlik: {eq.depth} km</div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm text-on-surface-variant">
-                        {new Date(eq.timestamp).toLocaleString('tr-TR')}
-                      </div>
-                    </div>
-                  </div>
+          <div className="max-w-6xl mx-auto">
+            {/* Error Banner */}
+            {error && (
+              <div className="mb-6">
+                <ErrorBanner error={error} onRetry={refetch} type="api" />
+              </div>
+            )}
+
+            {/* Stats Header */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div className="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10">
+                <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase">En Yüksek Mag</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-headline font-bold text-error">
+                    {earthquakes.length > 0 ? Math.max(...earthquakes.map(eq => eq.magnitude)).toFixed(1) : '-'}
+                  </span>
+                  <span className="text-xs text-on-surface-variant font-medium">Mv</span>
                 </div>
-              ))}
+              </div>
+              <div className="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10">
+                <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase">Ortalama Derinlik</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-headline font-bold text-tertiary">
+                    {earthquakes.length > 0 ? (earthquakes.reduce((acc, eq) => acc + eq.depth, 0) / earthquakes.length).toFixed(1) : '-'}
+                  </span>
+                  <span className="text-xs text-on-surface-variant font-medium">km</span>
+                </div>
+              </div>
+              <div className="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10">
+                <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase">Sismik Aktivite</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-headline font-bold text-primary">Normal</span>
+                </div>
+              </div>
+              <div className="bg-surface-container-low p-5 rounded-xl border border-outline-variant/10 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-primary-container to-transparent"></div>
+                <p className="text-[10px] font-bold text-on-surface-variant tracking-widest mb-2 uppercase relative z-10">Aktif Depremler</p>
+                <div className="flex items-baseline gap-2 relative z-10">
+                  <span className="text-3xl font-headline font-bold text-on-surface">{total}</span>
+                </div>
+              </div>
             </div>
+
+            {/* Filter Controls */}
+            <div className="flex flex-wrap gap-4 mb-6">
+              <select
+                value={minMagnitude || ''}
+                onChange={(e) => setMinMagnitude(e.target.value ? parseFloat(e.target.value) : undefined)}
+                className="px-4 py-2 bg-surface-container rounded-lg text-on-surface border border-outline-variant/20 focus:border-primary focus:outline-none"
+              >
+                <option value="">Tüm Büyüklükler</option>
+                <option value="2">2.0+</option>
+                <option value="3">3.0+</option>
+                <option value="4">4.0+</option>
+                <option value="5">5.0+</option>
+              </select>
+              <select
+                value={source || ''}
+                onChange={(e) => setSource(e.target.value || undefined)}
+                className="px-4 py-2 bg-surface-container rounded-lg text-on-surface border border-outline-variant/20 focus:border-primary focus:outline-none"
+              >
+                <option value="">Tüm Kaynaklar</option>
+                <option value="KANDILLI">Kandilli</option>
+                <option value="USGS">USGS</option>
+                <option value="AFAD">AFAD</option>
+              </select>
+            </div>
+
+            {/* Earthquake List */}
+            <div className="mb-6">
+              <h2 className="text-2xl font-bold font-headline text-on-surface mb-2">DEPREM LİSTESİ</h2>
+              <div className="flex items-center gap-4">
+                <span className="text-xs font-semibold text-primary bg-primary/10 px-2 py-1 rounded">CANLI VERİ</span>
+                <span className="text-xs font-medium text-on-surface-variant font-label uppercase tracking-widest">Son 24 Saat İçinde {total} Sismik Olay</span>
+              </div>
+            </div>
+
+            {loading && earthquakes.length === 0 ? (
+              <LoadingSpinner label="Deprem verileri yükleniyor..." />
+            ) : (
+              <>
+                <EarthquakeList 
+                  earthquakes={earthquakes}
+                  onEarthquakeClick={handleEarthquakeClick}
+                />
+                
+                {/* Load More */}
+                {hasMore && (
+                  <div className="mt-6 text-center">
+                    <button
+                      onClick={loadMore}
+                      disabled={loading}
+                      className="px-6 py-3 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-lg font-medium transition-all disabled:opacity-50"
+                    >
+                      {loading ? 'Yükleniyor...' : 'Daha Fazla Yükle'}
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* Selected Earthquake Info */}
+            {selectedEarthquake && (
+              <div className="mt-6 p-4 bg-primary/10 rounded-xl border border-primary/30">
+                <p className="text-sm text-on-surface">
+                  Seçilen deprem: <span className="font-semibold">{selectedEarthquake.location}</span> - 
+                  Büyüklük: <span className="font-semibold">{selectedEarthquake.magnitude}</span>
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
