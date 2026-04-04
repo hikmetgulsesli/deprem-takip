@@ -31,7 +31,7 @@ describe('kandilli service', () => {
       depth: 10,
       latitude: 41.0082,
       longitude: 28.9784,
-      source: 'kandilli',
+      source: 'KANDILLI',
     })
     expect(result.error).toBeUndefined()
   })

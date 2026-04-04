@@ -45,7 +45,7 @@ function parseKandilliXML(xmlText: string): Earthquake[] {
         date: new Date(`${date.replace(/\./g, '-')}T${time}`).toISOString(),
         latitude,
         longitude,
-        source: 'kandilli',
+        source: 'KANDILLI',
       })
     }
   }
