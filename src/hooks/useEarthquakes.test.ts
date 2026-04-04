@@ -4,11 +4,12 @@ import { useEarthquakes, useEarthquake } from './useEarthquakes';
 
 describe('useEarthquakes', () => {
   beforeEach(() => {
-    vi.useFakeTimers();
+    // Set test mode for faster loading
+    (window as { __TEST__?: boolean }).__TEST__ = true;
   });
 
   afterEach(() => {
-    vi.useRealTimers();
+    delete (window as { __TEST__?: boolean }).__TEST__;
   });
 
   it('should initialize with loading state', () => {
@@ -22,11 +23,9 @@ describe('useEarthquakes', () => {
   it('should load earthquakes after mount', async () => {
     const { result } = renderHook(() => useEarthquakes());
     
-    vi.advanceTimersByTime(1500);
-    
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
-    });
+    }, { timeout: 1000 });
     
     expect(result.current.earthquakes.length).toBeGreaterThan(0);
     expect(result.current.error).toBeNull();
@@ -35,11 +34,9 @@ describe('useEarthquakes', () => {
   it('should filter by minMagnitude', async () => {
     const { result } = renderHook(() => useEarthquakes(4.0));
     
-    vi.advanceTimersByTime(1500);
-    
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
-    });
+    }, { timeout: 1000 });
     
     expect(result.current.earthquakes.every(eq => eq.magnitude >= 4.0)).toBe(true);
   });
@@ -47,21 +44,18 @@ describe('useEarthquakes', () => {
   it('should refetch data', async () => {
     const { result } = renderHook(() => useEarthquakes());
     
-    vi.advanceTimersByTime(1500);
-    
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
-    });
+    }, { timeout: 1000 });
     
     const initialCount = result.current.earthquakes.length;
     
     // Refetch
     result.current.refetch();
-    vi.advanceTimersByTime(1500);
     
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
-    });
+    }, { timeout: 1000 });
     
     expect(result.current.earthquakes.length).toBe(initialCount);
   });
@@ -69,11 +63,9 @@ describe('useEarthquakes', () => {
   it('should track total count', async () => {
     const { result } = renderHook(() => useEarthquakes());
     
-    vi.advanceTimersByTime(1500);
-    
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
-    });
+    }, { timeout: 1000 });
     
     expect(result.current.total).toBeGreaterThan(0);
   });
@@ -81,11 +73,11 @@ describe('useEarthquakes', () => {
 
 describe('useEarthquake', () => {
   beforeEach(() => {
-    vi.useFakeTimers();
+    (window as { __TEST__?: boolean }).__TEST__ = true;
   });
 
   afterEach(() => {
-    vi.useRealTimers();
+    delete (window as { __TEST__?: boolean }).__TEST__;
   });
 
   it('should not fetch when id is null', () => {
@@ -98,11 +90,9 @@ describe('useEarthquake', () => {
   it('should fetch earthquake by id', async () => {
     const { result } = renderHook(() => useEarthquake('1'));
     
-    vi.advanceTimersByTime(1000);
-    
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
-    });
+    }, { timeout: 1000 });
     
     expect(result.current.earthquake).not.toBeNull();
     expect(result.current.earthquake?.id).toBe('1');
@@ -111,11 +101,9 @@ describe('useEarthquake', () => {
   it('should return error for non-existent id', async () => {
     const { result } = renderHook(() => useEarthquake('999'));
     
-    vi.advanceTimersByTime(1000);
-    
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
-    });
+    }, { timeout: 1000 });
     
     expect(result.current.earthquake).toBeNull();
     expect(result.current.error).toContain('bulunamadı');

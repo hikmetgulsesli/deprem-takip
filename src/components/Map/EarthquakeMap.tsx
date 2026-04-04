@@ -15,11 +15,12 @@ export function EarthquakeMap({ earthquakes, onMarkerClick }: EarthquakeMapProps
 
   // Get color based on source
   const getColor = (source: string) => {
-    return source === 'kandilli' ? '#f97316' : '#3b82f6'; // orange-500 : blue-500
+    return source === 'KANDILLI' ? '#f97316' : '#3b82f6'; // orange-500 : blue-500
   };
 
   // Format time in Turkish
-  const formatTime = (date: string) => {
+  const formatTime = (date: string | undefined) => {
+    if (!date) return 'Bilinmiyor';
     return new Date(date).toLocaleString('tr-TR', {
       year: 'numeric',
       month: 'long',
@@ -62,8 +63,8 @@ export function EarthquakeMap({ earthquakes, onMarkerClick }: EarthquakeMapProps
               </p>
               <div className="space-y-1 text-sm">
                 <p><span className="text-gray-500">Derinlik:</span> {eq.depth} km</p>
-                <p><span className="text-gray-500">Tarih:</span> {formatTime(eq.date)}</p>
-                <p><span className="text-gray-500">Kaynak:</span> {eq.source === 'kandilli' ? 'Kandilli' : 'USGS'}</p>
+                <p><span className="text-gray-500">Tarih:</span> {formatTime(eq.date || eq.timestamp)}</p>
+                <p><span className="text-gray-500">Kaynak:</span> {eq.source === 'KANDILLI' ? 'Kandilli' : eq.source}</p>
               </div>
             </div>
           </Popup>

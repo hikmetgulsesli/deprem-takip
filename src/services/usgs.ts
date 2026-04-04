@@ -35,7 +35,7 @@ function parseUSGSGeoJSON(data: USGSGeoJSON): Earthquake[] {
       date: new Date(feature.properties.time).toISOString(),
       latitude,
       longitude,
-      source: 'usgs',
+      source: 'USGS',
     }
   })
 }

@@ -39,7 +39,7 @@ describe('usgs service', () => {
       depth: 12.5,
       latitude: 34.0522,
       longitude: -118.2437,
-      source: 'usgs',
+      source: 'USGS',
     })
     expect(result.error).toBeUndefined()
   })

@@ -1,6 +1,7 @@
 export interface Earthquake {
   id: string;
-  timestamp: string;
+  timestamp?: string;
+  date?: string;
   latitude: number;
   longitude: number;
   magnitude: number;
