@@ -18,16 +18,16 @@ interface MagnitudeRange {
   label: string;
   min: number;
   max: number;
-  color: string;
+  colorVar: string;
   description: string;
 }
 
 const magnitudeRanges: MagnitudeRange[] = [
-  { label: '1-2', min: 1, max: 2, color: '#59d5fb', description: 'Mikro' },
-  { label: '2-3', min: 2, max: 3, color: '#59d5fb', description: 'Çok Hafif' },
-  { label: '3-4', min: 3, max: 4, color: '#ffb59d', description: 'Hafif' },
-  { label: '4-5', min: 4, max: 5, color: '#ffb59d', description: 'Orta' },
-  { label: '5+', min: 5, max: Infinity, color: '#ffb4ab', description: 'Güçlü' },
+  { label: '1-2', min: 1, max: 2, colorVar: '--color-tertiary', description: 'Mikro' },
+  { label: '2-3', min: 2, max: 3, colorVar: '--color-tertiary', description: 'Çok Hafif' },
+  { label: '3-4', min: 3, max: 4, colorVar: '--color-secondary', description: 'Hafif' },
+  { label: '4-5', min: 4, max: 5, colorVar: '--color-secondary', description: 'Orta' },
+  { label: '5+', min: 5, max: Infinity, colorVar: '--color-error', description: 'Güçlü' },
 ];
 
 export function AnalysisPanel({ earthquakes }: AnalysisPanelProps) {
@@ -57,6 +57,15 @@ export function AnalysisPanel({ earthquakes }: AnalysisPanelProps) {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5);
 
+  // Calculate pie chart segments
+  const pieSegments = [
+    { label: 'M 1.0 - 3.0', value: distribution.slice(0, 2).reduce((sum, d) => sum + d.count, 0), color: 'var(--color-tertiary)', desc: 'Mikro Sarsıntılar' },
+    { label: 'M 3.0 - 5.0', value: distribution.slice(2, 4).reduce((sum, d) => sum + d.count, 0), color: 'var(--color-secondary)', desc: 'Hissedilebilir' },
+    { label: 'M 5.0+', value: distribution[4]?.count || 0, color: 'var(--color-error)', desc: 'Yüksek Risk' },
+  ];
+  const totalPie = pieSegments.reduce((sum, s) => sum + s.value, 0) || 1;
+  const piePercentages = pieSegments.map(s => Math.round((s.value / totalPie) * 100));
+
   // Calculate statistics
   const avgMagnitude = total > 0 
     ? (earthquakes.reduce((sum, eq) => sum + eq.magnitude, 0) / total).toFixed(1)
@@ -77,47 +86,23 @@ export function AnalysisPanel({ earthquakes }: AnalysisPanelProps) {
         <h2 className="analysis-title">SİSMİK ANALİZ</h2>
         <div className="analysis-subtitle-row">
           <div className="analysis-line"></div>
-          <span className="analysis-subtitle">Deprem İstatistikleri ve Dağılım Analizi</span>
+          <span className="analysis-subtitle">Global Seismic Intelligence &amp; Data Insights</span>
         </div>
       </div>
 
-      {/* Stats Overview */}
-      <div className="stats-grid">
-        <div className="stat-card">
-          <p className="stat-label">TOPLAM DEPREM</p>
-          <div className="stat-value-row">
-            <span className="stat-value">{total}</span>
+      {/* Bento Grid Layout */}
+      <div className="bento-grid">
+        {/* Main Trend Chart - Magnitude Distribution */}
+        <section className="bento-main">
+          <div className="bento-header">
+            <div>
+              <h3 className="bento-title">BÜYÜKLÜK DAĞILIMI</h3>
+              <p className="bento-subtitle">Deprem büyüklüğü aralıklarına göre dağılım</p>
+            </div>
+            <div className="bento-badge">
+              <span className="live-badge">LIVE PULSE</span>
+            </div>
           </div>
-        </div>
-        <div className="stat-card">
-          <p className="stat-label">ORTALAMA BÜYÜKLÜK</p>
-          <div className="stat-value-row">
-            <span className="stat-value">{avgMagnitude}</span>
-            <span className="stat-unit">M</span>
-          </div>
-        </div>
-        <div className="stat-card">
-          <p className="stat-label">EN YÜKSEK BÜYÜKLÜK</p>
-          <div className="stat-value-row">
-            <span className="stat-value stat-value-error">{maxMagnitude}</span>
-            <span className="stat-unit">M</span>
-          </div>
-        </div>
-        <div className="stat-card">
-          <p className="stat-label">ORTALAMA DERİNLİK</p>
-          <div className="stat-value-row">
-            <span className="stat-value stat-value-tertiary">{avgDepth}</span>
-            <span className="stat-unit">km</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content Grid */}
-      <div className="analysis-grid">
-        {/* Magnitude Distribution */}
-        <section className="distribution-section">
-          <h3 className="section-title">BÜYÜKLÜK DAĞILIMI</h3>
-          <p className="section-subtitle">Deprem büyüklüğü aralıklarına göre dağılım</p>
           
           <div className="distribution-bars">
             {distribution.map((item) => (
@@ -131,7 +116,7 @@ export function AnalysisPanel({ earthquakes }: AnalysisPanelProps) {
                     className="distribution-bar-fill"
                     style={{ 
                       width: `${(item.count / maxCount) * 100}%`,
-                      backgroundColor: item.color
+                      backgroundColor: `var(${item.colorVar})`
                     }}
                   />
                 </div>
@@ -141,10 +126,88 @@ export function AnalysisPanel({ earthquakes }: AnalysisPanelProps) {
           </div>
         </section>
 
+        {/* Side Stats */}
+        <div className="bento-side">
+          {/* Stats Cards */}
+          <div className="side-card stats-mini">
+            <h3 className="side-title">İSTATİSTİKLER</h3>
+            <div className="stats-mini-grid">
+              <div className="stat-mini">
+                <span className="stat-mini-value">{total}</span>
+                <span className="stat-mini-label">Toplam</span>
+              </div>
+              <div className="stat-mini">
+                <span className="stat-mini-value">{avgMagnitude}</span>
+                <span className="stat-mini-label">Ort. M</span>
+              </div>
+              <div className="stat-mini">
+                <span className="stat-mini-value stat-mini-error">{maxMagnitude}</span>
+                <span className="stat-mini-label">Max M</span>
+              </div>
+              <div className="stat-mini">
+                <span className="stat-mini-value stat-mini-tertiary">{avgDepth}</span>
+                <span className="stat-mini-label">Ort. km</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Total Activity Card */}
+          <div className="side-card activity-card">
+            <div className="activity-header">
+              <div>
+                <h4 className="activity-value">{total}</h4>
+                <p className="activity-label">Toplam Aktivite</p>
+              </div>
+              <div className="activity-icon">
+                <span className="material-symbols-outlined">pulse_alert</span>
+              </div>
+            </div>
+            <div className="activity-sparkline">
+              <svg viewBox="0 0 100 20" className="sparkline-svg">
+                <path d="M0,10 L10,12 L20,5 L30,15 L40,8 L50,12 L60,3 L70,14 L80,9 L90,12 L100,6" fill="none" strokeWidth="1" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Magnitude Segmentation (Pie Chart) */}
+        <section className="bento-pie">
+          <h3 className="bento-title">MAGNİTÜD SEGMENTASYONU</h3>
+          <div className="pie-content">
+            <div className="pie-chart">
+              <svg viewBox="0 0 36 36" className="pie-svg">
+                <circle cx="18" cy="18" r="15.9" fill="transparent" stroke="var(--color-surface-container)" strokeWidth="4" />
+                <circle cx="18" cy="18" r="15.9" fill="transparent" stroke="var(--color-tertiary)" strokeWidth="4" 
+                  strokeDasharray={`${piePercentages[0]} 100`} strokeDashoffset="0" />
+                <circle cx="18" cy="18" r="15.9" fill="transparent" stroke="var(--color-secondary)" strokeWidth="4" 
+                  strokeDasharray={`${piePercentages[1]} 100`} strokeDashoffset={`-${piePercentages[0]}`} />
+                <circle cx="18" cy="18" r="15.9" fill="transparent" stroke="var(--color-error)" strokeWidth="4" 
+                  strokeDasharray={`${piePercentages[2]} 100`} strokeDashoffset={`-${piePercentages[0] + piePercentages[1]}`} />
+              </svg>
+              <div className="pie-center">
+                <span className="pie-total">{total}</span>
+                <span className="pie-label">TOPLAM</span>
+              </div>
+            </div>
+            <div className="pie-legend">
+              {pieSegments.map((seg, idx) => (
+                <div key={seg.label} className="legend-item">
+                  <div className="legend-color" style={{ backgroundColor: seg.color }}></div>
+                  <div className="legend-info">
+                    <p className="legend-label">{seg.label}</p>
+                    <p className="legend-desc">{seg.desc}</p>
+                  </div>
+                  <span className="legend-percent">{piePercentages[idx]}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Top Locations */}
-        <section className="locations-section">
-          <h3 className="section-title">EN AKTİF BÖLGELER</h3>
-          <p className="section-subtitle">Deprem sayısına göre ilk 5 lokasyon</p>
+        <section className="bento-locations">
+          <h3 className="bento-title">EN AKTİF BÖLGELER</h3>
+          <p className="bento-subtitle">Deprem sayısına göre ilk 5 lokasyon</p>
           
           <div className="locations-list">
             {topLocations.length > 0 ? (
@@ -180,8 +243,8 @@ export function AnalysisPanel({ earthquakes }: AnalysisPanelProps) {
             <h4 className="summary-title">Analiz Özeti</h4>
             <p className="summary-description">
               {total > 0 
-                ? `Son dönemde ${total} deprem kaydedildi. En yüksek büyüklük ${maxMagnitude}M olarak ölçüldü.`
-                : 'Henüz analiz edilecek deprem verisi bulunmuyor.'}
+                ? `Toplam ${total} deprem analiz edildi. En güçlü deprem ${maxMagnitude}M olarak ölçüldü.`
+                : 'Henüz veri bulunmamaktadır'}
             </p>
           </div>
         </div>
