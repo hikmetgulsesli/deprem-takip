@@ -56,11 +56,7 @@ export function EarthquakeList({
     const diffHours = Math.floor(diffMs / 3600000);
     const diffDays = Math.floor(diffMs / 86400000);
 
-    let timeAgo = '';
-    if (diffMins < 1) timeAgo = 'Az önce';
-    else if (diffMins < 60) timeAgo = `${diffMins} dakika önce`;
-    else if (diffHours < 24) timeAgo = `${diffHours} saat önce`;
-    else timeAgo = `${diffDays} gün önce`;
+    const timeAgo = diffMins < 1 ? 'Az önce' : diffMins < 60 ? `${diffMins} dakika önce` : diffHours < 24 ? `${diffHours} saat önce` : `${diffDays} gün önce`;
 
     return {
       full: date.toLocaleString('tr-TR', {
